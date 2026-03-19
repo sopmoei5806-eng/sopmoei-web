@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อเรา - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+
+        /* Header & Nav */
+        .top-bar { background-color: var(--primary-blue); color: var(--text-light); padding: 5px 20px; font-size: 14px; display: flex; justify-content: space-between; }
+        .header { background-color: #ffffff; padding: 20px 50px; display: flex; align-items: center; gap: 20px; }
+        .header img { width: 80px; }
+        .header-text h1 { font-size: 24px; color: var(--primary-blue); font-weight: 700; }
+
+        .navbar { background-color: var(--primary-blue); display: flex; justify-content: space-between; align-items: center; padding: 0 50px; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li a { display: block; color: var(--text-light); text-decoration: none; padding: 15px 20px; font-weight: 500; }
+        .nav-links li a:hover, .nav-links li a.active { background-color: var(--primary-yellow); color: var(--primary-blue); }
+
+        /* Page Header */
+        .page-header { background-color: #e9ecef; padding: 30px 50px; border-bottom: 3px solid var(--primary-yellow); }
+        .page-header h2 { color: var(--primary-blue); font-size: 28px; }
+
+        /* Contact Layout */
+        .contact-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-info-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-yellow);
+            padding-left: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            font-size: 24px;
+            color: var(--primary-blue);
+            width: 30px;
+        }
+
+        .info-item h5 { font-size: 18px; color: var(--primary-blue); margin-bottom: 5px; }
+        .info-item p { color: #666; font-size: 16px; }
+
+        /* Map Section */
+        .map-wrapper {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            height: 400px;
+            margin-top: 30px;
+        }
+        iframe { width: 100%; height: 100%; border-radius: 8px; border: none; }
+
+        /* Contact Form (เดี๋ยวคีย์ Link Formspree เองนะครับ) */
+        .contact-form-section {
+            background: var(--primary-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-section h3 { margin-bottom: 20px; color: var(--primary-yellow); }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-send {
+            background: var(--primary-yellow);
+            color: var(--primary-blue);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-send:hover { background: white; }
+
+        .footer { background-color: #0d2650; color: var(--text-light); text-align: center; padding: 20px; margin-top: 50px; }
+
+        @media (max-width: 992px) {
+            .contact-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <a href="#" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="index.html">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="index.html">บริการประชาชน</a></li>
+            <li><a href="index.html">ข่าวสารและประกาศ</a></li>
+            <li><a href="call.html" class="active">ติดต่อเรา</a></li>
+            
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>ช่องทางการติดต่อ</h2>
+    </div>
+
+    <div class="contact-container">
+        <div class="left-col">
+            <div class="contact-info-section">
+                <h3>ข้อมูลติดต่อสอบถาม</h3>
+                
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h5>ที่อยู่</h5>
+                        <p>ที่ทำการปกครองอำเภอสบเมย หมู่ที่ 1 ต.สบเมย อ.สบเมย จ.แม่ฮ่องสอน 58110</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h5>เบอร์โทรศัพท์</h5>
+                        <p>053-618-077 (สำนักงานอำเภอ)</p>
+                        <p>053-618- (งานทะเบียนและบัตร)</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h5>อีเมล</h5>
+                        <p>sopmoei5806@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h5>เวลาทำการ</h5>
+                        <p>จันทร์ - ศุกร์: 08.30 น. - 16.30 น.</p>
+                        <p>(เว้นวันหยุดราชการและนักขัตฤกษ์)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d15124.621213326164!2d97.9250000!3d17.9250000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c2534f3780373b%3A0x40346c5ecf000!2z4reS4reU4reV4reU4reS4reU4reS4reU4reS4reU4reS4reU4reS4reU4reS4reU4reS4reU!5e0!3m2!1sth!2sth!4v1710750000000!5m2!1sth!2sth" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div class="contact-form-section">
+            <h3>ส่งข้อความถึงเรา</h3>
+            <p style="margin-bottom: 25px; opacity: 0.9;">หากท่านมีข้อสงสัยหรือต้องการร้องเรียน/เสนอแนะ สามารถส่งข้อความผ่านฟอร์มด้านล่างนี้ได้ทันที</p>
+            
+            <form action="https://formspree.io/f/xkoqknkr" method="POST">
+                <div class="form-group">
+                    <label>ชื่อ-นามสกุล</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>เบอร์โทรศัพท์ / อีเมล</label>
+                    <input type="text" name="contact" required>
+                </div>
+                <div class="form-group">
+                    <label>หัวข้อการติดต่อ</label>
+                    <input type="text" name="subject">
+                </div>
+                <div class="form-group">
+                    <label>ข้อความ</label>
+                    <textarea name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn-send">ส่งข้อความ</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

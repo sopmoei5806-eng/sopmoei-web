@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข่าวสารและประกาศ - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f0f2f5;
+            --text-dark: #2c3e50;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); }
+
+        /* Navigation (ดึงมาจากหน้าแรกเพื่อให้เหมือนกัน) */
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li a {
+            padding: 18px 25px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        .nav-links li a:hover, .nav-links li a.active { background: var(--primary-yellow); color: var(--primary-blue); }
+
+        /* Page Header */
+        .page-banner {
+            background: linear-gradient(rgba(20,59,122,0.8), rgba(20,59,122,0.8)), url('pl.png');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 50px;
+            color: white;
+            text-align: center;
+        }
+        .page-banner h2 { font-size: 32px; margin-bottom: 10px; }
+        .breadcrumb { font-size: 14px; opacity: 0.8; }
+        .breadcrumb a { color: var(--primary-yellow); text-decoration: none; }
+
+        /* News Layout */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Category Filter (ลูกเล่นเพิ่มเติม) */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .filter-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .news-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover img { transform: scale(1.1); }
+
+        .news-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-yellow);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .news-body { padding: 25px; flex-grow: 1; }
+        .news-date { font-size: 13px; color: #888; margin-bottom: 10px; display: block; }
+        .news-title {
+            font-size: 19px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+        .news-excerpt {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn-read {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: auto;
+        }
+        .btn-read:hover { color: var(--primary-yellow); }
+
+        /* Pagination (การแบ่งหน้า) */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        .page-btn {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            background: white; border: 1px solid #ddd;
+            border-radius: 5px; cursor: pointer; text-decoration: none; color: var(--text-dark);
+        }
+        .page-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+
+        /* Footer */
+        .footer {
+            background-color: #0a1931;
+            color: #a0aec0;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            .nav-links { display: none; }
+            .news-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div style="color: white; font-weight: 700; font-size: 18px;">ที่ทำการปกครองอำเภอสบเมย</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> หน้าแรก</a></li>
+            <li><a href="new_all.html" class="active"><i class="fas fa-bullhorn"></i> ข่าวสารและประกาศ</a></li>
+            <li><a href="call.html"><i class="fas fa-envelope"></i> ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-banner">
+        <h2>คลังข่าวสารและประกาศ</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> / ข่าวสารและประกาศ
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="filter-bar">
+            <button class="filter-btn active">ทั้งหมด</button>
+            <button class="filter-btn">ข่าวประชาสัมพันธ์</button>
+            <a href="procurement.html"></a><button class="filter-btn"> ประกาศจัดซื้อจัดจ้าง </button>
+            <button class="filter-btn">กิจกรรมอำเภอ</button>
+            <button class="filter-btn">คำสั่ง/ระเบียบ</button>
+        </div>
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-img-wrapper">
+                    <span class="news-badge">กิจกรรม</span>
+                    <img src="images/tee.jpg" alt="ข่าวอำเภอยิ้ม">
+                </div>
+                <div class="news-body">
+                    <span class="news-date"><i class="far fa-calendar-alt"></i> 19 มีนาคม 2569</span>
+                    <h3 class="news-title">โครงการอำเภอยิ้ม (อำเภอเคลื่อนที่) ออกให้บริการเชิงรุกสู่พี่น้องประชาชน</h3>
+                    <p class="news-excerpt">ที่ทำการปกครองอำเภอสบเมย นำโดยนายอำเภอและเจ้าหน้าที่ ออกหน่วยบริการเคลื่อนที่เพื่ออำนวยความสะดวกในการทำบัตรประชาชนและงานทะเบียนราษฎร...</p>
+                    <a href="new.html" class="btn-read">อ่านรายละเอียด <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-img-wrapper">
+                    <span class="news-badge">ประกาศ</span>
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600" alt="ข่าวสงกรานต์">
+                </div>
+                <div class="news-body">
+                    <span class="news-date"><i class="far fa-calendar-alt"></i> 18 มีนาคม 2569</span>
+                    <h3 class="news-title">การให้บริการประชาชนช่วงเทศกาลสงกรานต์ ประจำปี 2569</h3>
+                    <p class="news-excerpt">แจ้งกำหนดการเปิดให้บริการงานทะเบียนและบัตรประจำตัวประชาชน ในช่วงวันหยุดยาวเทศกาลสงกรานต์ เพื่อรองรับพี่น้องประชาชนที่เดินทางกลับภูมิลำเนา...</p>
+                    <a href="new1.html" class="btn-read">อ่านรายละเอียด <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-img-wrapper">
+                    <span class="news-badge">ข่าวประชาสัมพันธ์</span>
+                    <img src="https://images.unsplash.com/photo-1541888001402-6111fdb8ec6b?w=600" alt="ข่าว">
+                </div>
+                <div class="news-body">
+                    <span class="news-date"><i class="far fa-calendar-alt"></i> 15 มีนาคม 2569</span>
+                    <h3 class="news-title">เตรียมความพร้อมรับมือสถานการณ์หมอกควันและไฟป่าในพื้นที่</h3>
+                    <p class="news-excerpt">ขอความร่วมมือประชาชนในพื้นที่งดการเผาในที่โล่งแจ้ง และติดตามสถานการณ์ค่าฝุ่นละออง PM 2.5 อย่างใกล้ชิดในช่วงสัปดาห์นี้...</p>
+                    <a href="#" class="btn-read">อ่านรายละเอียด <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </article>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="page-btn active">1</a>
+            <a href="#" class="page-btn">2</a>
+            <a href="#" class="page-btn">3</a>
+            <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดซื้อจัดจ้าง - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f0f2f5;
+            --text-dark: #2c3e50;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); }
+
+        /* Navigation Bar (เหมือนหน้าอื่นๆ) */
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li a {
+            padding: 18px 25px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-links li a:hover, .nav-links li a.active { background: var(--primary-yellow); color: var(--primary-blue); }
+
+        /* Page Header */
+        .page-banner {
+            background: linear-gradient(rgba(20,59,122,0.85), rgba(20,59,122,0.85)), url('pl.png');
+            background-size: cover;
+            background-position: center;
+            padding: 50px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Table Style */
+        .procurement-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+        .procurement-table th {
+            background-color: #f8faff;
+            color: var(--primary-blue);
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+        .procurement-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .procurement-table tr:hover { background-color: #fcfcfc; }
+
+        /* Status Badge */
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .badge-new { background: #e3fcef; color: #00875a; }
+        .badge-process { background: #deebff; color: #0052cc; }
+
+        /* Download Button */
+        .btn-download {
+            color: #d9534f;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-download:hover { color: #c9302c; }
+
+        /* Tabs (หัวข้อย่อย) */
+        .tab-menu {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            border-radius: 5px;
+        }
+        .tab-btn.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .footer { background: #0a1931; color: #a0aec0; text-align: center; padding: 30px; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div style="color: white; font-weight: 700;">ที่ทำการปกครองอำเภอสบเมย</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> หน้าแรก</a></li>
+            <li><a href="new_all.html"><i class="fas fa-bullhorn"></i> ข่าวสาร</a></li>
+            <li><a href="procurement.html" class="active"><i class="fas fa-file-invoice-dollar"></i> จัดซื้อจัดจ้าง</a></li>
+            <li><a href="call.html"><i class="fas fa-envelope"></i> ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-banner">
+        <h2>ระบบจัดซื้อจัดจ้าง</h2>
+        <p>ประกาศจัดซื้อจัดจ้าง และราคากลาง ที่ทำการปกครองอำเภอสบเมย</p>
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <div class="tab-menu">
+                <button class="tab-btn active">ประกาศจัดซื้อจัดจ้าง</button>
+                <button class="tab-btn">ร่าง TOR</button>
+                <button class="tab-btn">สรุปผลการจัดซื้อ (สขร.)</button>
+            </div>
+
+            <table class="procurement-table">
+                <thead>
+                    <tr>
+                        <th width="15%">วันที่ประกาศ</th>
+                        <th width="50%">รายการประกาศ</th>
+                        <th width="20%">สถานะ</th>
+                        <th width="15%">ดาวน์โหลด</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>19 มี.ค. 2569</td>
+                        <td>จัดจ้างเหมาบริการรักษาความปลอดภัย ประจำปีงบประมาณ 2569</td>
+                        <td><span class="badge badge-new">ประกาศล่าสุด</span></td>
+                        <td><a href="#" class="btn-download"><i class="fas fa-file-pdf"></i> PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>15 มี.ค. 2569</td>
+                        <td>ประกวดราคาซื้อวัสดุสำนักงาน จำนวน 12 รายการ โดยวิธีคัดเลือก</td>
+                        <td><span class="badge badge-process">อยู่ระหว่างดำเนินการ</span></td>
+                        <td><a href="#" class="btn-download"><i class="fas fa-file-pdf"></i> PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>10 มี.ค. 2569</td>
+                        <td>ประกาศราคากลางโครงการปรับปรุงห้องประชุมที่ว่าการอำเภอสบเมย</td>
+                        <td><span class="badge badge-process">อยู่ระหว่างดำเนินการ</span></td>
+                        <td><a href="#" class="btn-download"><i class="fas fa-file-pdf"></i> PDF</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน</p>
+    </footer>
+
+</body>
+</html>
