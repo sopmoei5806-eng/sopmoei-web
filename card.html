@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>งานบัตรประจำตัวประชาชน - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 30px 50px;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        .page-header h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .content-container {
+            padding: 40px 50px;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        .content-title {
+            color: var(--primary-blue);
+            font-size: 22px;
+            border-left: 5px solid var(--primary-yellow);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Services Grid */
+        .service-list-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .service-box {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--primary-blue);
+            padding: 25px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .service-box:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top-color: var(--primary-yellow);
+        }
+
+        .service-box h4 {
+            color: var(--primary-blue);
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-box h4 i {
+            color: var(--primary-yellow);
+            font-size: 24px;
+        }
+        
+        .fee-tag {
+            display: inline-block;
+            background-color: #e2e3e5;
+            color: #383d41;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .fee-tag.fee-yes {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .service-box ul {
+            list-style-type: none;
+        }
+
+        .service-box ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .service-box ul li::before {
+            content: '\f105'; /* ลูกศรชี้ขวา FontAwesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+        }
+
+        /* Dress Code Note */
+        .dress-code-note {
+            background-color: #e8f4fd;
+            border-left: 5px solid #143b7a;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .dress-code-note i {
+            font-size: 24px;
+            color: #143b7a;
+            margin-top: 5px;
+        }
+        .dress-code-note h5 {
+            color: #143b7a;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .dress-code-note p {
+            font-size: 15px;
+            color: #444;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .service-list-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="#" style="color: white; text-decoration: none; margin-right: 15px;"><i class="fas fa-home"></i> หน้าหลักรัฐบาล</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="#" class="active">บริการประชาชน</a></li>
+            <li><a href="#">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>งานบัตรประจำตัวประชาชน</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> &gt; <a href="#">บริการประชาชน</a> &gt; งานบัตรประจำตัวประชาชน
+        </div>
+    </div>
+
+    <div class="content-container">
+        
+        <h3 class="content-title">การขอมีบัตรประจำตัวประชาชน</h3>
+        <p style="margin-bottom: 25px;">
+            งานบัตรประจำตัวประชาชน อำเภอสบเมย ให้บริการจัดทำบัตรประจำตัวประชาชนแบบสมาร์ทการ์ด (Smart Card) ทุกประเภท ผู้ขอรับบริการต้องมาติดต่อด้วยตนเองเพื่อถ่ายรูปและพิมพ์ลายนิ้วมือ
+        </p>
+
+        <div class="service-list-grid">
+            
+            <div class="service-box">
+                <h4><i class="fas fa-id-card"></i> ทำบัตรครั้งแรก (อายุ 7 ปีบริบูรณ์)</h4>
+                <div class="fee-tag">ไม่มีค่าธรรมเนียม</div>
+                <ul>
+                    <li>สูติบัตรฉบับจริง</li>
+                    <li>ทะเบียนบ้านฉบับเจ้าบ้าน (ที่มีชื่อเด็ก)</li>
+                    <li>บัตรประชาชนของบิดา มารดา หรือผู้ปกครอง (ที่พาเด็กมาทำบัตร)</li>
+                    <li><span style="color: #d9534f; font-size: 13px;">*ต้องมีชื่อในทะเบียนบ้านในพื้นที่อำเภอสบเมย หรืออำเภออื่นในประเทศไทย</span></li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h4><i class="fas fa-user-clock"></i> บัตรเดิมหมดอายุ</h4>
+                <div class="fee-tag">ไม่มีค่าธรรมเนียม</div>
+                <ul>
+                    <li>บัตรประจำตัวประชาชนเดิมที่หมดอายุ</li>
+                    <li>สามารถมาขอทำบัตรใหม่ได้ล่วงหน้า 60 วัน ก่อนบัตรหมดอายุ</li>
+                    <li>หากบัตรหมดอายุเกินกว่า 60 วัน อาจต้องเตรียมเอกสารยืนยันตัวตนอื่นเพิ่มเติม</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h4><i class="fas fa-id-card-clip"></i> บัตรสูญหาย หรือ ชำรุด</h4>
+                <div class="fee-tag fee-yes">ค่าธรรมเนียม 100 บาท</div>
+                <ul>
+                    <li><strong>กรณีบัตรชำรุด:</strong> นำบัตรเดิมที่ชำรุดมาแสดง</li>
+                    <li><strong>กรณีบัตรหาย:</strong> ต้องใช้เอกสารที่มีรูปถ่ายที่ทางราชการออกให้ เช่น ใบขับขี่, พาสปอร์ต, รด., หลักฐานการศึกษา หรือหากไม่มี ต้องมีบุคคลรับรอง (เจ้าบ้าน/กำนัน/ผู้ใหญ่บ้าน)</li>
+                    <li>ไม่ต้องไปแจ้งความที่สถานีตำรวจ สามารถแจ้งหายที่อำเภอได้เลย</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h4><i class="fas fa-pen-to-square"></i> เปลี่ยนชื่อ-สกุล หรือ เปลี่ยนที่อยู่</h4>
+                <div class="fee-tag fee-yes">ค่าธรรมเนียม 100 บาท</div>
+                <ul>
+                    <li>บัตรประจำตัวประชาชนเดิม</li>
+                    <li>หลักฐานการเปลี่ยนชื่อตัว / เปลี่ยนชื่อสกุล ฉบับจริง (ถ้ามี)</li>
+                    <li>ทะเบียนบ้านฉบับเจ้าบ้าน (ที่มีรายการแก้ไขแล้ว)</li>
+                    <li>ต้องมาขอทำบัตรใหม่ภายใน 60 วัน นับแต่วันที่แก้ไขรายการในทะเบียนบ้าน</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="dress-code-note">
+            <i class="fas fa-camera"></i>
+            <div>
+                <h5>คำแนะนำการแต่งกายเพื่อถ่ายรูปทำบัตร</h5>
+                <p>
+                    กรุณาแต่งกายด้วยชุดสุภาพ มีแขน ไม่สวมเสื้อคอลึก (อนุโลมเสื้อยืดคอกลมได้) <br>
+                    <strong>ข้อแนะนำ:</strong> ควรใส่เสื้อผ้าสีเข้ม หรือสีที่ตัดกับพื้นหลัง (ฉากหลังเป็นสีฟ้า) เพื่อให้ภาพบนบัตรมีความคมชัดและสวยงาม งดการใส่แว่นตาดำและหมวกขณะถ่ายภาพ
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

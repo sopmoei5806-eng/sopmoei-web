@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ขออนุญาตต่างๆ - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 30px 50px;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        .page-header h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .content-container {
+            padding: 40px 50px;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        .content-title {
+            color: var(--primary-blue);
+            font-size: 22px;
+            border-left: 5px solid var(--primary-yellow);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Services Grid */
+        .service-list-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .service-box {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--primary-blue);
+            padding: 25px;
+            border-radius: 6px;
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        .service-box:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top-color: var(--primary-yellow);
+        }
+
+        .service-box h4 {
+            color: var(--primary-blue);
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-box h4 i {
+            color: var(--primary-yellow);
+            font-size: 24px;
+        }
+
+        .service-box ul {
+            list-style-type: none;
+        }
+
+        .service-box ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .service-box ul li::before {
+            content: '\f105'; /* ลูกศรชี้ขวา FontAwesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+        }
+
+        /* Note Section */
+        .general-note {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .general-note p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .general-note strong {
+            color: var(--primary-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .service-list-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="#" style="color: white; text-decoration: none; margin-right: 15px;"><i class="fas fa-home"></i> หน้าหลักรัฐบาล</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="#" class="active">บริการประชาชน</a></li>
+            <li><a href="#">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>ขออนุญาตต่างๆ</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> &gt; <a href="#">บริการประชาชน</a> &gt; ขออนุญาตต่างๆ
+        </div>
+    </div>
+
+    <div class="content-container">
+        
+        <h3 class="content-title">งานทะเบียนทั่วไปและงานอนุญาตทางปกครอง</h3>
+        <p style="margin-bottom: 25px;">
+            ที่ทำการปกครองอำเภอสบเมย ให้บริการจดทะเบียนและออกใบอนุญาตตามกฎหมายในหลายประเภท เพื่ออำนวยความสะดวกและรักษาความสงบเรียบร้อยในสังคม กรุณาเตรียมเอกสารที่เกี่ยวข้องมาให้ครบถ้วน
+        </p>
+
+        <div class="service-list-grid">
+            
+            <div class="service-box">
+                <h4><i class="fas fa-ring"></i> งานทะเบียนครอบครัว</h4>
+                <p style="font-size: 14px; color: #666; margin-bottom: 10px;">(จดทะเบียนสมรส, หย่า, รับรองบุตร)</p>
+                <ul>
+                    <li>บัตรประจำตัวประชาชนของผู้ร้องทั้งสองฝ่าย</li>
+                    <li>ทะเบียนบ้านฉบับจริง</li>
+                    <li>พยานบุคคลจำนวน 2 คน (พร้อมบัตร ปชช.)</li>
+                    <li>กรณีหญิงที่หย่าหรือสามีตาย จะจดทะเบียนสมรสใหม่ได้เมื่อพ้น 310 วัน (ยกเว้นมีใบรับรองแพทย์ว่าไม่ได้ตั้งครรภ์)</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h4><i class="fas fa-hand-holding-heart"></i> การขออนุญาตทำการเรี่ยไร</h4>
+                <p style="font-size: 14px; color: #666; margin-bottom: 10px;">(การขอรับบริจาคเพื่อสาธารณประโยชน์)</p>
+                <ul>
+                    <li>บัตรประจำตัวประชาชนและทะเบียนบ้านผู้ขออนุญาต</li>
+                    <li>หนังสือแสดงวัตถุประสงค์ในการเรี่ยไร (อย่างละเอียด)</li>
+                    <li>หนังสืออนุญาตให้ใช้สถานที่ (กรณีตั้งโต๊ะรับบริจาค)</li>
+                    <li>แผนการใช้จ่ายเงินที่ได้จากการเรี่ยไร</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h4><i class="fas fa-building-ngo"></i> การจัดตั้งสมาคม / มูลนิธิ</h4>
+                <ul>
+                    <li>รายชื่อ นามสกุล ประวัติ และสำเนาบัตร ปชช. ของผู้เริ่มก่อตั้ง (ไม่น้อยกว่า 3 คน)</li>
+                    <li>ร่างข้อบังคับของสมาคม/มูลนิธิ</li>
+                    <li>รายงานการประชุมก่อตั้ง</li>
+                    <li>แผนที่ตั้งสำนักงานใหญ่ และหนังสือยินยอมให้ใช้สถานที่</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h4><i class="fas fa-file-signature"></i> งานอนุญาตอื่นๆ (ฝ่ายความมั่นคง)</h4>
+                <p style="font-size: 14px; color: #666; margin-bottom: 10px;">เช่น โรงแรม, สถานบริการ, การพนันตามกฎหมายอนุญาต</p>
+                <ul>
+                    <li>สำเนาบัตรประจำตัวประชาชน และทะเบียนบ้าน</li>
+                    <li>แบบแปลนสถานที่ / แผนที่สังเขป</li>
+                    <li>เอกสารสิทธิ์แสดงความเป็นเจ้าของสถานที่ หรือสัญญาเช่า</li>
+                    <li>ใบอนุญาตที่เกี่ยวข้องจากหน่วยงานอื่น (เช่น สาธารณสุข, โยธาธิการ)</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="general-note">
+            <p><strong><i class="fas fa-phone-alt"></i> ติดต่อสอบถามรายละเอียดเพิ่มเติม หรือขอรับแบบฟอร์มคำขอ:</strong></p>
+            <p>เนื่องจากงานขออนุญาตบางประเภทมีรายละเอียดเอกสารประกอบและกฎหมายที่ซับซ้อน แนะนำให้โทรสอบถามเจ้าหน้าที่ก่อนเดินทางมาติดต่อได้ที่:</p>
+            <p style="font-size: 18px; font-weight: bold; color: var(--primary-blue); margin-top: 10px;">โทร. 053-618-077 (ในวันและเวลาราชการ)</p>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

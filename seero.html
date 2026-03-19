@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ศูนย์ดำรงธรรม - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 30px 50px;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        .page-header h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .content-container {
+            padding: 40px 50px;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        .content-title {
+            color: var(--primary-blue);
+            font-size: 22px;
+            border-left: 5px solid var(--primary-yellow);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Info Blocks */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .info-box h4 {
+            color: var(--primary-blue);
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--primary-yellow);
+            padding-bottom: 10px;
+        }
+
+        .info-box h4 i {
+            color: var(--primary-yellow);
+        }
+
+        .info-box ul {
+            list-style-type: none;
+        }
+
+        .info-box ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .info-box ul li::before {
+            content: '\f058'; /* เครื่องหมายติ๊กถูกวงกลม */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #28a745;
+        }
+
+        /* Contact Channels */
+        .contact-channels {
+            background-color: #e8f4fd;
+            border: 1px solid #b8daff;
+            padding: 25px;
+            border-radius: 6px;
+            margin-top: 30px;
+        }
+        
+        .contact-channels h4 {
+            color: #143b7a;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .channel-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .channel-icon {
+            font-size: 24px;
+            color: var(--primary-blue);
+            background: var(--primary-yellow);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Notice */
+        .privacy-notice {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 14px;
+            border-left: 4px solid #ffc107;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="#" style="color: white; text-decoration: none; margin-right: 15px;"><i class="fas fa-home"></i> หน้าหลักรัฐบาล</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="#" class="active">บริการประชาชน</a></li>
+            <li><a href="#">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>ศูนย์ดำรงธรรมอำเภอ</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> &gt; <a href="#">บริการประชาชน</a> &gt; ศูนย์ดำรงธรรม
+        </div>
+    </div>
+
+    <div class="content-container">
+        
+        <h3 class="content-title">ศูนย์ดำรงธรรมอำเภอสบเมย "บริการด้วยใจ แก้ไขปัญหาประชาชน" ปลัดอำเภอผู้รับผิดชอบ ส.ต.อ.ศุภชัย จันสุวรรณ</h3>
+        <p style="margin-bottom: 25px;">
+            ศูนย์ดำรงธรรมอำเภอสบเมย จัดตั้งขึ้นเพื่อทำหน้าที่รับเรื่องร้องเรียน ร้องทุกข์ ให้บริการข้อมูลข่าวสาร ให้คำปรึกษา รับเรื่องปัญหาความต้องการและข้อเสนอแนะของประชาชน รวมทั้งทำหน้าที่เป็นศูนย์ไกล่เกลี่ยประนีประนอมข้อพิพาทในระดับอำเภอ
+        </p>
+
+        <div class="info-grid">
+            
+            <div class="info-box">
+                <h4><i class="fas fa-bullseye"></i> ภารกิจให้บริการ</h4>
+                <ul>
+                    <li>รับเรื่องร้องเรียน / ร้องทุกข์ ความเดือดร้อนของประชาชน</li>
+                    <li>ไกล่เกลี่ยและประนีประนอมข้อพิพาท (หนี้สิน, ที่ดิน, ความขัดแย้ง)</li>
+                    <li>ให้บริการข้อมูลข่าวสารของทางราชการ</li>
+                    <li>รับฟังข้อเสนอแนะและแจ้งเบาะแสการกระทำความผิด</li>
+                    <li>ให้คำปรึกษาปัญหาข้อกฎหมายเบื้องต้น</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4><i class="fas fa-file-alt"></i> ข้อมูลที่ควรเตรียมในการร้องเรียน</h4>
+                <ul>
+                    <li>ชื่อ - นามสกุล และที่อยู่ของผู้ร้องเรียน (เพื่อแจ้งผลการดำเนินการ)</li>
+                    <li>เบอร์โทรศัพท์ที่สามารถติดต่อได้สะดวก</li>
+                    <li>รายละเอียดของเรื่องที่ต้องการร้องเรียน (วัน เวลา สถานที่ เหตุการณ์)</li>
+                    <li>เอกสารหลักฐานที่เกี่ยวข้อง (เช่น รูปถ่าย, สัญญา, สำเนาเอกสาร)</li>
+                    <li>พยานบุคคล (ถ้ามี)</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="privacy-notice">
+            <i class="fas fa-user-secret"></i> <strong>ข้อมูลของท่านจะถูกเก็บเป็นความลับ:</strong> ศูนย์ดำรงธรรมอำเภอสบเมย จะปกปิดชื่อและข้อมูลส่วนตัวของผู้ร้องเรียนเป็นความลับ เพื่อความปลอดภัยของท่าน (ยกเว้นกรณีการร้องเรียนที่ไม่ระบุตัวตนและไม่มีหลักฐานชัดเจน อาจทำให้การตรวจสอบข้อเท็จจริงเป็นไปได้ยาก)
+        </div>
+
+        <div class="contact-channels">
+            <h4><i class="fas fa-comments"></i> ช่องทางการร้องเรียน / ติดต่อศูนย์ดำรงธรรม</h4>
+            
+            <div class="channel-list">
+                <div class="channel-item">
+                    <div class="channel-icon"><i class="fas fa-walking"></i></div>
+                    <div>
+                        <strong>ติดต่อด้วยตนเอง (Walk-in)</strong><br>
+                        <span style="color: #666; font-size: 14px;">ณ ห้องศูนย์ดำรงธรรมอำเภอสบเมย ที่ว่าการอำเภอสบเมย จังหวัดแม่ฮ่องสอน (ในวันและเวลาราชการ)</span>
+                    </div>
+                </div>
+                
+                <div class="channel-item">
+                    <div class="channel-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div>
+                        <strong>สายด่วน / โทรศัพท์</strong><br>
+                        <span style="color: #666; font-size: 14px;">ปลัดอำเภอผู้รับผิดชอบ ส.ต.อ.ศุภชัย จันสุวรรณ หรือ โทร. 053-618-077 (เบอร์อำเภอ)</span>
+                    </div>
+                </div>
+
+                <div class="channel-item">
+                    <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <strong>ทางออนไลน์</strong><br>
+                        <span style="color: #666; font-size: 14px;">: FB ศูนย์ดำรงธรรมที่ว่าการอำเภอสบเมย  ทางไปรษณีย์ 58110</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

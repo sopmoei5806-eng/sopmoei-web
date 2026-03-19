@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a; /* สีน้ำเงินกรมการปกครอง */
+            --primary-yellow: #f4c22b; /* สีเหลืองกรมการปกครอง */
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Header / Logo Area */
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 90px; /* ปรับขนาดโลโก้ตามความเหมาะสม */
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px; /* ความกว้างของกล่องเมนูย่อย */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 100;
+            border-top: 3px solid var(--primary-yellow);
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+        }
+
+        /* ตกแต่งตัวหนังสือในเมนูย่อย */
+        .nav-links .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 20px;
+            font-weight: 400;
+            border-bottom: 1px solid #f0f0f0;
+            background-color: #ffffff; /* ล้างค่าสีเหลืองจากเมนูหลัก */
+        }
+
+        .nav-links .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        /* เวลาเอาเมาส์ชี้ที่เมนูย่อย */
+        .nav-links .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-blue);
+            padding-left: 25px; /* ลูกเล่นเลื่อนขยับขวานิดนึงตอนชี้ */
+        }
+
+        /* สั่งให้เมนูย่อยโชว์ออกมาเวลาเอาเมาส์ชี้ที่เมนูหลัก */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+        .search-box {
+            display: flex;
+        }
+        .search-box input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .search-box button {
+            background-color: var(--primary-yellow);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Hero Banner */
+        .hero {
+            position: relative;
+            /* กำหนดความสูงตามความเหมาะสม (เช่น 400px หรือปรับ vh หากต้องการ) */
+            height: 400px; 
+            display: flex;
+            align-items: flex-end;
+            
+            /* --- เริ่มส่วนที่แก้ไข --- */
+            
+            /* ลบ background-image เดิมออก */
+            background: none; 
+            
+            /* สั่งให้ส่วนเนื้อหาที่ล้นออกมา (ถ้ามี) โดนซ่อนไว้ */
+            overflow: hidden; 
+            
+            /* --- จบส่วนที่แก้ไข --- */
+        }
+        .hero-image-gallery {
+            position: absolute; /* วางซ้อนด้านหลังสุด */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex; /* สั่งให้รูปเรียงกันแนวนอน */
+            z-index: 0; /* อยู่หลัง Overlay และ Text */
+        }
+
+        /* คลาสใหม่สำหรับตกแต่งรูปภาพทั้ง 4 รูป */
+        .hero-image-gallery img {
+            width: 25%; /* 4 รูป รูปละ 25% เพื่อรวมเป็น 100% เต็มหน้าจอ */
+            height: 100%; /* สูงเต็มพื้นที่ */
+            
+            /* **หัวใจสำคัญ** ใช้ 'cover' ในบล็อก 25% ของตัวเอง
+               เพื่อให้รูปแต่ละรูปลงตัวพอดี ไม่บิดเบี้ยว แม้สัดส่วนไฟล์รูปจะไม่เท่ากัน */
+            object-fit: cover; 
+            object-position: center; /* จัดรูปให้อยู่กึ่งกลาง */
+            
+            /* (ไม่บังคับ) หากต้องการขอบเส้นสีขาวบางๆ แยกแต่ละรูป ให้เอา comment ออก */
+            /* border-right: 1px solid white; */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 30px 50px;
+            color: var(--text-light);
+            background: linear-gradient(to right, rgba(20,59,122,0.9), transparent);
+            width: 100%;
+        }
+        .hero-content h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary-yellow);
+        }
+
+        /* Main Content Grid */
+        .container {
+            padding: 40px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-yellow);
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .service-card {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .service-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--primary-yellow);
+            transform: translateY(-3px);
+        }
+        .service-icon {
+            font-size: 36px;
+            color: var(--primary-yellow);
+            margin-bottom: 10px;
+        }
+
+        /* News List */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .news-item {
+            display: flex;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .news-img {
+            width: 100px;
+            height: 80px;
+            background-color: #ccc;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 10px 15px;
+        }
+        .news-content h4 {
+            font-size: 14px;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        .news-date {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Contact Form */
+        .contact-box {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 25px;
+            border-radius: 8px;
+        }
+        .contact-box h3 {
+            margin-bottom: 15px;
+            color: var(--primary-yellow);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Sarabun', sans-serif;
+        }
+        .btn-submit {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #e0b020;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .contact-info p {
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .single-bg-hero {
+            position: relative;
+            /* กำหนดความสูงตามความเหมาะสม (เช่น 400px หรือปรับ vh หากต้องการ) */
+            height: 400px; 
+            display: flex;
+            align-items: flex-end;
+            
+            /* --- เริ่มส่วนที่แก้ไข --- */
+            
+            /* เรียกใช้รูปภาพแบนเนอร์ใหม่ (ชื่อไฟล์ใหม่ของคุณ) */
+            background-image: url('pl.png');
+            
+            /* จัดตำแหน่งให้อยู่กึ่งกลาง bottom เพื่อให้เห็นแคมป์ปิ้งชัดเจน */
+            background-position: center bottom;
+            
+            /* ปรับเป็น 'cover' เพื่อให้รูปเดียวเต็มหน้าจออย่างสวยงาม */
+            background-size: cover;
+            
+            /* ไม่ให้รูปซ้ำทาง */
+            background-repeat: no-repeat;
+            
+            /* (ไม่บังคับ) หากต้องการกำหนดสีพื้นหลัง เผื่อกรณีสัดส่วนรูปไม่พอดีหน้าจอ */
+            /* background-color: #f8f9fa; */
+            
+            /* --- จบส่วนที่แก้ไข --- */
+            
+            z-index: 1; /* ให้ Overlay และ Text อยู่หน้า */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .search-box {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="#" style="color: white; text-decoration: none; margin-right: 15px;"><i class="fas fa-home"></i> หน้าหลักรัฐบาล</a>
+            <a href="kong.html" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#" class="active">หน้าแรก</a></li>
+            <li class="dropdown">
+                <a href="#">เกี่ยวกับหน่วยงาน <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="comphun.html"><i class="fas fa-user-tie"></i> 1. ผู้บริหาร</a>
+                    <a href="palad.html"><i class="fas fa-user-shield"></i> 2. ปลัดอำเภอ</a>
+                    <a href="peper.html"><i class="fas fa-users"></i> 3. เจ้าหน้าที่</a>
+                </div>
+            </li>
+            <li><a href="#">บริการประชาชน <i class="fas fa-caret-down"></i></a></li>
+            <li><a href="#">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+        <div class="search-box">
+            <input type="text" placeholder="ค้นหาข้อมูล...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+
+    <section class="single-bg-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>ยินดีต้อนรับสู่ที่ทำการปกครองอำเภอสบเมย</h2>
+            <p>มุ่งมั่นให้บริการ บำบัดทุกข์ บำรุงสุข ประชาชน</p>
+        </div>
+    </section>
+    
+
+    <main class="container">
+       <a href="thatha.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <i class="fas fa-clipboard-user service-icon"></i>
+                        <p>ทะเบียนราษฎร</p>
+                    </div>
+                </a>
+                <a href="card.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <i class="fas fa-id-card service-icon"></i>
+                        <p>บัตรประชาชน</p>
+                    </div>
+                </a>
+                <a href="kerd.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <i class="fas fa-baby service-icon"></i>
+                        <p>แจ้งเกิด/ตาย</p>
+                    </div>
+                </a>
+                <a href="kho.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <i class="fas fa-file-signature service-icon"></i>
+                        <p>ขออนุญาตต่างๆ</p>
+                    </div>
+                </a>
+                <a href="pern.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <i class="fas fa-gun service-icon"></i>
+                        <p>งานอาวุธปืน</p>
+                    </div>
+                </a>
+                <a href="seero.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <i class="fas fa-users service-icon"></i>
+                        <p>ศูนย์ดำรงธรรม</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h3 class="section-title">ข่าวประชาสัมพันธ์</h3>
+            <div class="news-item">
+                    <img src="images/tee.jpg  " class="news-img" alt="ข่าวอำเภอยิ้ม">
+                    <div class="news-content">
+                        <a href="new.html" style="text-decoration: none;">
+                            <h4 style="color: var(--primary-blue);">โครงการอำเภอยิ้ม (อำเภอเคลื่อนที่) ให้บริการประชาชน...</h4>
+                        </a>
+                        <span class="news-date"><i class="far fa-calendar-alt"></i> [ใส่วันที่ตรงนี้]</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=150&auto=format&fit=crop" class="news-img" alt="ข่าว">
+                    <div class="news-content">
+                         <a href="new1.html" style="text-decoration: none;"></a>
+                        <h4>ประกาศให้บริการ ช่วงวันสงกรานต์ </h4>
+                        <span class="news-date"><i class="far fa-clock"></i> 1 วันที่แล้ว</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <img src="https://images.unsplash.com/photo-1541888001402-6111fdb8ec6b?w=150&auto=format&fit=crop" class="news-img" alt="ข่าว">
+                    <div class="news-content">
+                        <h4>อื่นๆ...</h4>
+                        <span class="news-date"><i class="far fa-clock"></i> 3 วันที่แล้ว</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: right; margin-top: 10px;">
+                <a href="#" style="color: var(--primary-blue); font-size: 14px; text-decoration: none;">ดูข่าวทั้งหมด <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h3>ติดต่อสอบถาม</h3>
+            <form action="https://formspree.io/f/xkoqknkr" method="POST">
+    <div class="form-group">
+        <input type="text" name="name" placeholder="ชื่อ-นามสกุล" required>
+    </div>
+    <div class="form-group">
+        <input type="text" name="contact" placeholder="อีเมล / เบอร์โทรศัพท์" required>
+    </div>
+    <div class="form-group">
+        <textarea name="message" rows="4" placeholder="ข้อความที่ต้องการสอบถาม..." required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">ส่งข้อความ</button>
+</form>
+            
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt" style="color: var(--primary-yellow);"></i> ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน 58110</p>
+                <p><i class="fas fa-phone" style="color: var(--primary-yellow);"></i> 053-618-077</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

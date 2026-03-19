@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้บริหาร - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar + Dropdown */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+
+        /* Dropdown CSS */
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 100;
+            border-top: 3px solid var(--primary-yellow);
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+        }
+        .nav-links .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 20px;
+            font-weight: 400;
+            border-bottom: 1px solid #f0f0f0;
+            background-color: #ffffff;
+        }
+        .nav-links .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-blue);
+            padding-left: 25px;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Page Header */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 30px 50px;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        .page-header h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .content-container {
+            padding: 40px 50px;
+            max-width: 1000px; 
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        /* Executive Profile Layout */
+        .executive-profile {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            padding-bottom: 50px;
+            border-bottom: 2px dashed #ccc;
+        }
+
+        /* เอาเส้นคั่นของคนสุดท้ายออก */
+        .executive-profile:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .executive-img-wrapper {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .executive-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 5px solid #f8f9fa;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #ddd;
+        }
+
+        .executive-info {
+            flex: 1;
+        }
+
+        .executive-name {
+            color: var(--primary-blue);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .executive-position {
+            font-size: 20px;
+            color: var(--primary-yellow);
+            font-weight: 600;
+            background-color: var(--primary-blue);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+        }
+
+        /* Details Sections */
+        .detail-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-blue);
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .detail-box h4 {
+            color: var(--primary-blue);
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-box ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        .detail-box ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .detail-box ul li::before {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-yellow);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .executive-profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+            .executive-img-wrapper {
+                flex: 0 0 auto;
+                width: 80%;
+                max-width: 300px;
+            }
+            .detail-box {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="admin_contact.html" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="active">เกี่ยวกับหน่วยงาน <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="staff.html"><i class="fas fa-users"></i> 1. เจ้าหน้าที่</a>
+                    <a href="executive.html"><i class="fas fa-user-tie"></i> 2. ผู้บริหาร</a>
+                    <a href="palad.html"><i class="fas fa-user-shield"></i> 3. ปลัดอำเภอ</a>
+                </div>
+            </li>
+
+            <li><a href="#">บริการประชาชน</a></li>
+            <li><a href="#">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>ผู้บริหารอำเภอสบเมย</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> &gt; เกี่ยวกับหน่วยงาน &gt; ผู้บริหาร
+        </div>
+    </div>
+
+    <div class="content-container">
+        
+        <div class="executive-profile">
+            <div class="executive-img-wrapper">
+                <img src="images/comphun.jpg" alt="นายคำผัน โมกไธสง" class="executive-img">
+            </div>
+            
+            <div class="executive-info">
+                <div class="executive-name">นายคำผัน โมกไธสง</div>
+                <div class="executive-position">นายอำเภอสบเมย</div>
+
+               
+                <div class="detail-box">
+                    <h4><i class="fas fa-briefcase"></i> ประวัติการรับราชการ</h4>
+                    <ul>
+                        <li> ดำรงตำแหน่ง เมื่อวันที่ 13 มกราคม 2568 </li>
+                        <li>ปัจจุบัน - นายอำเภอสบเมย จังหวัดแม่ฮ่องสอน</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="executive-profile">
+            <div class="executive-img-wrapper">
+                <img src="images/jaroon.jpg" alt="นายจรูญ จินกัณฑ์" class="executive-img">
+            </div>
+            
+            <div class="executive-info">
+                <div class="executive-name">นายจรูญ จินกัณฑ์</div>
+                <div class="executive-position">ปลัดอำเภอหัวหน้ากลุ่มงานบริหารงานปกครอง (ปลัดอาวุโส)</div>
+
+                
+
+                <div class="detail-box">
+                    <h4><i class="fas fa-briefcase"></i> ประวัติการรับราชการ</h4>
+                    <ul>
+                        <li>......</li>
+                      
+                        <li>ปัจจุบัน - ปลัดอำเภอหัวหน้ากลุ่มงานบริหารงานปกครอง อำเภอสบเมย</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

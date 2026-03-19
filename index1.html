@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>นายอำเภอสบเมย</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Sarabun',sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* ================= HEADER ================= */
+
+.hero{
+    background:linear-gradient(rgba(10,25,55,0.85),rgba(10,25,55,0.85)),
+    url('https://images.unsplash.com/photo-1608889178239-6d1f20e7b7d4') center/cover;
+    color:white;
+    padding:80px 10%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.hero img{
+    width:320px;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero-text{
+    max-width:600px;
+}
+
+.hero h1{
+    font-size:42px;
+    font-weight:700;
+    color:#f5d27a;
+    margin-bottom:10px;
+}
+
+.hero h2{
+    font-weight:400;
+    margin-bottom:20px;
+}
+
+.hero p{
+    margin-bottom:25px;
+    font-size:18px;
+}
+
+.btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:4px;
+    margin-right:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.btn-primary{
+    background:#d4af37;
+    color:#0a1937;
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid #d4af37;
+    color:#d4af37;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    padding:70px 10%;
+}
+
+.section h3{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:40px;
+    color:#0a1937;
+    position:relative;
+}
+
+.section h3::after{
+    content:'';
+    width:60px;
+    height:3px;
+    background:#d4af37;
+    display:block;
+    margin:10px auto 0;
+}
+
+/* ================= BIO ================= */
+
+.bio{
+    display:flex;
+    gap:40px;
+}
+
+.bio-box{
+    flex:1;
+    background:white;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ================= POLICY ================= */
+
+.policy{
+    background:#0a1937;
+    color:white;
+    text-align:center;
+}
+
+.policy p{
+    max-width:800px;
+    margin:0 auto 40px;
+}
+
+.policy-grid{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+.policy-item{
+    background:#142850;
+    padding:30px;
+    border-radius:8px;
+    width:250px;
+    border:1px solid #d4af37;
+}
+
+/* ================= DUTIES ================= */
+
+.duties-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.duty{
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0a1937;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:60px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .bio{
+        flex-direction:column;
+    }
+
+    .duties-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .duties-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>นายอำเภอสบเมย</h1>
+        <h2>นาย.......................</h2>
+        <p>“มุ่งมั่นพัฒนาคุณภาพชีวิตประชาชน ภายใต้หลักธรรมาภิบาล”</p>
+        <button class="btn btn-primary">ดาวน์โหลดประวัติ</button>
+        <button class="btn btn-outline">ติดต่อสำนักงาน</button>
+    </div>
+    <img src="https://images.unsplash.com/photo-1603415526960-f7e0328d7f6c" alt="นายอำเภอ">
+</section>
+
+<!-- BIO -->
+<section class="section">
+    <h3>ประวัติส่วนตัว</h3>
+    <div class="bio">
+        <div class="bio-box">
+            <p><strong>ชื่อ-สกุล:</strong> นาย..................</p>
+            <p><strong>วันเกิด:</strong> ...............</p>
+            <p><strong>ภูมิลำเนา:</strong> จังหวัด.............</p>
+            <p><strong>การศึกษา:</strong> ....................</p>
+        </div>
+        <div class="bio-box">
+            <p><strong>ประวัติการรับราชการ:</strong></p>
+            <p>- ตำแหน่ง....................</p>
+            <p>- ตำแหน่ง....................</p>
+            <p>- ดำรงตำแหน่งนายอำเภอสบเมย พ.ศ. .......</p>
+        </div>
+    </div>
+</section>
+
+<!-- POLICY -->
+<section class="section policy">
+    <h3>วิสัยทัศน์และนโยบาย</h3>
+    <p>บริหารงานด้วยความโปร่งใส ยึดประชาชนเป็นศูนย์กลาง ส่งเสริมความมั่นคงและการพัฒนาอย่างยั่งยืน</p>
+    <div class="policy-grid">
+        <div class="policy-item">ความมั่นคง</div>
+        <div class="policy-item">คุณภาพชีวิตประชาชน</div>
+        <div class="policy-item">การพัฒนาอย่างยั่งยืน</div>
+    </div>
+</section>
+
+<!-- DUTIES -->
+<section class="section">
+    <h3>ภารกิจและบทบาทหน้าที่</h3>
+    <div class="duties-grid">
+        <div class="duty">กำกับดูแลงานปกครอง</div>
+        <div class="duty">รักษาความสงบเรียบร้อย</div>
+        <div class="duty">ประสานหน่วยงานภาครัฐ</div>
+        <div class="duty">รับเรื่องร้องทุกข์ประชาชน</div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section">
+    <h3>แกลเลอรี่กิจกรรม</h3>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df">
+        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+    </div>
+</section>
+
+<footer>
+    ที่ว่าการอำเภอสบเมย จังหวัดแม่ฮ่องสอน | โทร. 0-xxxx-xxxx | info@example.com
+</footer>
+
+</body>
+</html>

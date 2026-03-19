@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข่าวประชาสัมพันธ์ทั้งหมด - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+
+        /* Header & Nav (เหมือนเดิมเพื่อความต่อเนื่อง) */
+        .top-bar { background-color: var(--primary-blue); color: var(--text-light); padding: 5px 20px; font-size: 14px; display: flex; justify-content: space-between; }
+        .header { background-color: #ffffff; padding: 20px 50px; display: flex; align-items: center; gap: 20px; }
+        .header img { width: 80px; }
+        .header-text h1 { font-size: 24px; color: var(--primary-blue); font-weight: 700; }
+        .navbar { background-color: var(--primary-blue); display: flex; justify-content: space-between; padding: 0 50px; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li a { display: block; color: var(--text-light); text-decoration: none; padding: 15px 20px; font-weight: 500; }
+        .nav-links li a:hover, .nav-links li a.active { background-color: var(--primary-yellow); color: var(--primary-blue); }
+
+        /* Page Header */
+        .page-header { background-color: #e9ecef; padding: 30px 50px; border-bottom: 3px solid var(--primary-yellow); }
+        .page-header h2 { color: var(--primary-blue); font-size: 28px; }
+
+        /* News Archive Grid */
+        .content-container { padding: 40px 50px; max-width: 1100px; margin: 30px auto; }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+        .news-card-img { width: 100%; height: 180px; object-fit: cover; }
+
+        .news-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+
+        .news-category { font-size: 12px; color: var(--primary-blue); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+
+        .news-card-title { font-size: 18px; color: var(--text-dark); font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+
+        .news-card-excerpt { font-size: 14px; color: #666; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .news-card-footer { border-top: 1px solid #eee; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #999; }
+
+        .btn-read { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .btn-read:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer { background-color: #0d2650; color: var(--text-light); text-align: center; padding: 20px; font-size: 14px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <a href="admin_contact.html" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
+    </div>
+
+    <header class="header">
+        <img src="dopa.jpg" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="#">บริการประชาชน</a></li>
+            <li><a href="news_all.html" class="active">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>คลังข่าวประชาสัมพันธ์</h2>
+    </div>
+
+    <div class="content-container">
+        <div class="news-grid">
+            
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1578351644360-aa207865c361?w=400" alt="ข่าวสงกรานต์" class="news-card-img">
+                <div class="news-card-body">
+                    <span class="news-category">ประกาศสำคัญ</span>
+                    <h4 class="news-card-title">เปิดให้บริการปกติ ช่วงวันสงกรานต์ งานทะเบียนและบัตร</h4>
+                    <p class="news-card-excerpt">อำเภอสบเมยเปิดให้บริการประชาชนในช่วงเทศกาลสงกรานต์ เพื่ออำนวยความสะดวกแก่ผู้เดินทางกลับภูมิลำเนา...</p>
+                    <div class="news-card-footer">
+                        <span><i class="far fa-calendar-alt"></i> [วันที่]</span>
+                        <a href="news1.html" class="btn-read">อ่านต่อ <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1590505106197-096b1b6c0003?w=400" alt="ข่าวอำเภอยิ้ม" class="news-card-img">
+                <div class="news-card-body">
+                    <span class="news-category">กิจกรรมอำเภอ</span>
+                    <h4 class="news-card-title">โครงการอำเภอยิ้มเคลื่อนที่ ออกให้บริการประชาชนในพื้นที่ห่างไกล</h4>
+                    <p class="news-card-excerpt">ที่ทำการปกครองอำเภอสบเมย นำโดยนายอำเภอและทีมงาน ลงพื้นที่ให้บริการเชิงรุก ณ หมู่บ้าน...</p>
+                    <div class="news-card-footer">
+                        <span><i class="far fa-calendar-alt"></i> [วันที่]</span>
+                        <a href="news.html" class="btn-read">อ่านต่อ <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1555169062-013468b47731?w=400" alt="ข่าวประชาสัมพันธ์" class="news-card-img">
+                <div class="news-card-body">
+                    <span class="news-category">แจ้งเตือนภัย</span>
+                    <h4 class="news-card-title">เตรียมความพร้อมรับมือสถานการณ์หมอกควันและไฟป่าในพื้นที่</h4>
+                    <p class="news-card-excerpt">ขอความร่วมมือประชาชนงดการเผาในที่โล่งแจ้ง และติดตามสถานการณ์ค่าฝุ่นละอองอย่างใกล้ชิด...</p>
+                    <div class="news-card-footer">
+                        <span><i class="far fa-calendar-alt"></i> [วันที่]</span>
+                        <a href="#" class="btn-read">อ่านต่อ <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แจ้งเกิดและแจ้งตาย - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --danger-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 30px 50px;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        .page-header h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .content-container {
+            padding: 40px 50px;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        .content-title {
+            color: var(--primary-blue);
+            font-size: 22px;
+            border-left: 5px solid var(--primary-yellow);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Box Styles */
+        .info-box {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-box.birth-box {
+            border-top: 4px solid #28a745; /* สีเขียวสำหรับเกิด */
+        }
+
+        .info-box.death-box {
+            border-top: 4px solid #343a40; /* สีเทาดำสำหรับตาย */
+        }
+
+        .info-box h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .birth-box h3 { color: #28a745; }
+        .death-box h3 { color: #343a40; }
+
+        .time-limit {
+            display: inline-block;
+            background-color: #ffeeba;
+            color: #856404;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--primary-yellow);
+        }
+
+        /* Grid for details */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .detail-column h5 {
+            color: var(--primary-blue);
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+
+        .detail-column ul {
+            list-style-type: none;
+        }
+
+        .detail-column ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .detail-column ul li::before {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+        }
+
+        /* Penalty Note */
+        .penalty-note {
+            background-color: #f8d7da;
+            border-left: 5px solid var(--danger-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            color: #721c24;
+            font-size: 14px;
+        }
+        .penalty-note strong {
+            color: var(--danger-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="#" style="color: white; text-decoration: none; margin-right: 15px;"><i class="fas fa-home"></i> หน้าหลักรัฐบาล</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="#" class="active">บริการประชาชน</a></li>
+            <li><a href="#">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>แจ้งเกิด / แจ้งตาย</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> &gt; <a href="#">บริการประชาชน</a> &gt; แจ้งเกิดและแจ้งตาย
+        </div>
+    </div>
+
+    <div class="content-container">
+        
+        <h3 class="content-title"><i class="fas fa-file-contract"></i> ขั้นตอนและเอกสารที่ต้องใช้ในการแจ้งเกิด-แจ้งตาย</h3>
+        <p style="margin-bottom: 25px;">
+            การแจ้งเกิดและการแจ้งตาย เป็นหน้าที่สำคัญตามกฎหมายทะเบียนราษฎร ประชาชนในเขตพื้นที่อำเภอสบเมย สามารถติดต่อขอรับบริการได้ที่ฝ่ายทะเบียนและบัตร ที่ว่าการอำเภอสบเมย โดยเตรียมเอกสารดังต่อไปนี้
+        </p>
+
+        <div class="info-box birth-box">
+            <h3><i class="fas fa-baby-carriage"></i> การแจ้งเกิด (ขอทำสูติบัตร)</h3>
+            <div class="time-limit"><i class="fas fa-clock"></i> กฎหมายกำหนดให้แจ้งภายใน 15 วัน นับแต่วันที่เด็กเกิด</div>
+            
+            <div class="detail-grid">
+                <div class="detail-column">
+                    <h5>กรณีเกิดที่โรงพยาบาล/สถานพยาบาล</h5>
+                    <ul>
+                        <li>บัตรประจำตัวประชาชนของผู้แจ้ง</li>
+                        <li>บัตรประจำตัวประชาชนของบิดา และ มารดา</li>
+                        <li>หนังสือรับรองการเกิด (ท.ร.1/1) ที่ออกโดยโรงพยาบาล</li>
+                        <li>ทะเบียนบ้านฉบับเจ้าบ้าน (เล่มที่ต้องการเพิ่มชื่อเด็ก)</li>
+                    </ul>
+                </div>
+                <div class="detail-column">
+                    <h5>กรณีเกิดที่บ้าน / นอกสถานพยาบาล</h5>
+                    <ul>
+                        <li>บัตรประจำตัวประชาชนของผู้แจ้ง (เจ้าบ้าน/บิดา/มารดา)</li>
+                        <li>บัตรประจำตัวประชาชนของบิดา และ มารดา</li>
+                        <li>ทะเบียนบ้านฉบับเจ้าบ้าน</li>
+                        <li>พยานบุคคลที่รู้เห็นการเกิด (ถ้ามี)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="penalty-note">
+                <i class="fas fa-exclamation-triangle"></i> <strong>คำเตือน:</strong> หากแจ้งเกิดเกินกำหนด (เกิน 15 วัน) จะต้องเสียค่าปรับตามกฎหมาย (ไม่เกิน 1,000 บาท) และต้องมีกระบวนการสอบปากคำพยานบุคคลเพิ่มเติม ซึ่งจะใช้เวลาดำเนินการนานขึ้น
+            </div>
+        </div>
+
+        <div class="info-box death-box">
+            <h3><i class="fas fa-ribbon"></i> การแจ้งตาย (ขอทำมรณบัตร)</h3>
+            <div class="time-limit"><i class="fas fa-clock"></i> กฎหมายกำหนดให้แจ้งภายใน 24 ชั่วโมง นับแต่เวลาที่ตายหรือพบศพ</div>
+            
+            <div class="detail-grid">
+                <div class="detail-column">
+                    <h5>กรณีตายในโรงพยาบาล</h5>
+                    <ul>
+                        <li>บัตรประจำตัวประชาชนของผู้แจ้ง</li>
+                        <li>หนังสือรับรองการตาย (ท.ร.4/1) ที่ออกโดยโรงพยาบาล</li>
+                        <li>บัตรประจำตัวประชาชนของผู้ตาย (ถ้ามี)</li>
+                        <li>ทะเบียนบ้านฉบับเจ้าบ้าน (ที่มีชื่อผู้ตาย)</li>
+                    </ul>
+                </div>
+                <div class="detail-column">
+                    <h5>กรณีตายที่บ้าน / อุบัติเหตุ / ผิดธรรมชาติ</h5>
+                    <ul>
+                        <li>บัตรประจำตัวประชาชนของผู้แจ้ง</li>
+                        <li><strong>ใบชันสูตรศพ / บันทึกประจำวันจากเจ้าหน้าที่ตำรวจ (กรณีตายผิดธรรมชาติ)</strong></li>
+                        <li>หนังสือรับรองการตาย จากผู้ใหญ่บ้าน (กรณีตายด้วยโรคชราที่บ้าน)</li>
+                        <li>บัตรประจำตัวประชาชนของผู้ตาย และทะเบียนบ้านที่มีชื่อผู้ตาย</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="penalty-note">
+                <i class="fas fa-exclamation-triangle"></i> <strong>คำเตือน:</strong> หากแจ้งตายเกินกำหนด (เกิน 24 ชั่วโมง) จะต้องเสียค่าปรับตามกฎหมาย และผู้แจ้งต้องเตรียมพยานบุคคลที่รู้เห็นการตายมาให้ถ้อยคำต่อหน้านายทะเบียนด้วย
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

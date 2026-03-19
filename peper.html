@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทำเนียบเจ้าหน้าที่ - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar + Dropdown (อัปเดตแล้ว) */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+
+        /* Dropdown CSS */
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 100;
+            border-top: 3px solid var(--primary-yellow);
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+        }
+        .nav-links .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 20px;
+            font-weight: 400;
+            border-bottom: 1px solid #f0f0f0;
+            background-color: #ffffff;
+        }
+        .nav-links .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-blue);
+            padding-left: 25px;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Page Header */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 30px 50px;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        .page-header h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .content-container {
+            padding: 40px 50px;
+            max-width: 1200px; /* ขยายให้กว้างขึ้นเพื่อรองรับคนจำนวนมาก */
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        .content-title {
+            color: var(--primary-blue);
+            font-size: 24px;
+            border-left: 5px solid var(--primary-yellow);
+            padding-left: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-left: none;
+            position: relative;
+        }
+        .content-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-yellow);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Staff Grid Layout */
+        .staff-grid {
+            display: grid;
+            /* จะปรับขนาดอัตโนมัติ ถ้าจอกว้างจะเรียง 4 คน ถ้าจอแคบจะลดลงมาเรื่อยๆ */
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        /* Staff Card Styling */
+        .staff-card {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-top: 4px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-top-color: var(--primary-yellow);
+        }
+
+        .staff-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #f8f9fa;
+            box-shadow: 0 0 0 2px var(--primary-yellow);
+            background-color: #ddd; /* สีพื้นหลังเผื่อรูปยังไม่โหลด */
+        }
+
+        .staff-name {
+            color: var(--primary-blue);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .staff-position {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .content-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="admin_contact.html" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="active">เกี่ยวกับหน่วยงาน <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="peper.html"><i class="fas fa-users"></i> 1. เจ้าหน้าที่</a>
+                    <a href="comphun.html"><i class="fas fa-user-tie"></i> 2. ผู้บริหาร</a>
+                    <a href="palad.html"><i class="fas fa-user-shield"></i> 3. ปลัดอำเภอ</a>
+                </div>
+            </li>
+
+            <li><a href="#">บริการประชาชน</a></li>
+            <li><a href="#">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>ทำเนียบเจ้าหน้าที่</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> &gt; เกี่ยวกับหน่วยงาน &gt; เจ้าหน้าที่
+        </div>
+    </div>
+
+    <div class="content-container">
+        
+        <h3 class="content-title">บุคลากรที่ทำการปกครองอำเภอสบเมย</h3>
+
+        <div class="staff-grid">
+            
+            <div class="staff-card">
+                <img src="king.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวกานต์สิริ ธรรมยศ</div>
+                <div class="staff-position">พนักงานราชการ</div>
+                <div class="staff-position"> กลุ่มงานบริหารงานปกครอง</div>
+            </div>
+             <div class="staff-card">
+                <img src="jeb.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวสุพรรณี คำแสน</div>
+                <div class="staff-position">พนักงานราชการ</div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง</div>
+            </div>
+            <div class="staff-card">
+                <img src="tewin.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">ม.ต.เทวิน นิรันดร์สุธี</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานบริหารงานปกครอง</div>
+            </div>
+              <div class="staff-card">
+                <img src="jen.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.ต.จีราพร สุขเสริมสุขรุ่ง</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานบริหารงานปกครอง</div>
+            </div>
+            <div class="staff-card">
+                <img src="jer.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">ม.ญ.เกศสุดา ดอกเพชร</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานบริหารงานปกครอง</div>
+            </div>
+              <div class="staff-card">
+                <img src="fha.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">ม.ญ.อัจฉรา ชีวภัทรภิญโญ</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานเสมียนตรา</div>
+            </div>
+            <div class="staff-card">
+                <img src="big.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.วิชยะ มั่งคำ </div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานเสมียนตรา</div>
+            </div>
+            <div class="staff-card">
+                <img src="one.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.ท.คำนึง คีรีโอภาสสันติ </div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+            <div class="staff-card">
+                <img src="orioo.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.อ.สาริน เพียรกิจว่องไว</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+            <div class="staff-card">
+                <img src="cha.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">ม.ต.ฤชา น้ำรินชื่นจิตใส</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+              <div class="staff-card">
+                <img src="suk.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.ทองสุข ทูตศิริ</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+            <div class="staff-card">
+                <img src="min.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.ชุลีพร วัฒนธรรมเลิศ</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+            <div class="staff-card">
+                <img src="koko.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.ภานุพงศ์ คูณคำจัน</div>
+                <div class="staff-position"> สมาชิก อส.</div>
+                <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+             <div class="staff-card">
+                <img src="cok.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.อนุสรณ์ เจตนาดีจึงจำเริญ</div>
+                <div class="staff-position">สมาชิก อส.</div>
+                  <div class="staff-position"> กลุ่มงานสำนักงานอำเภอ</div>
+            </div>
+                <div class="staff-card">
+                <img src="pod.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.พรพจน์ ไพรศิริทรัพย์</div>
+                <div class="staff-position">สมาชิก อส.</div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง</div>
+            </div>
+         
+                <div class="staff-card">
+                <img src="pee.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.พีรพล ยะคำดุก</div>
+                <div class="staff-position">สมาชิก อส.</div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง</div>
+            </div>
+             <div class="staff-card">
+                <img src="sem.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">อส.เกษม เกสรียรรยง</div>
+                <div class="staff-position">สมาชิก อส.</div>
+                  <div class="staff-position"> กลุ่มงานเสมียนตรา </div>
+            </div>
+             <div class="staff-card">
+                <img src="ppp.png" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวน้ำผึ้ง มงคล</div>
+                <div class="staff-position">เจ้าหน้าที่ปกครอง (สย.)</div>
+                  <div class="staff-position"> ศูนย์ดำรงธรรม</div>
+            </div>
+            <div class="staff-card">
+                <img src="so.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวโสภา คณากุลศิริ</div>
+                <div class="staff-position">เจ้าหน้าที่ปกครอง (สย.)</div>
+                  <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+             <div class="staff-card">
+                <img src="anna.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวครองขวัญ ผาติสุทธิกุล</div>
+                <div class="staff-position">เจ้าหน้าที่ปกครอง (สย.)</div>
+                  <div class="staff-position"> กลุ่มงานบริหารงานปกครอง</div>
+            </div>
+            <div class="staff-card">
+                <img src="kongg.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นายพรศักดิ์ ไสวบุษบา</div>
+                <div class="staff-position">เจ้าหน้าที่ปกครอง (สย.)</div>
+                  <div class="staff-position"> กลุ่มงานบริหารงานปกครอง</div>
+            </div>
+            <div class="staff-card">
+                <img src="pai.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวพรนภัส พุทธิมา</div>
+                <div class="staff-position">ลูกจ้างศูนย์ฯ แม่ลามาหลวง</div>
+                  <div class="staff-position"> กลุ่มงานสำนักงานอำเภอ</div>
+            </div>
+            <div class="staff-card">
+                <img src="nam.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวนิชาภัทร จันทสุวรรณ์ </div>
+                <div class="staff-position">ลูกจ้างศูนย์ฯ แม่ลามาหลวง</div>
+                  <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+              <div class="staff-card">
+                <img src="der.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวกษมา โรจน์โกวิท </div>
+                <div class="staff-position">ลูกจ้างเร่งรัดสถานะฯ.</div>
+                  <div class="staff-position"> กลุ่มงานทะเบียนและบัตร</div>
+            </div>
+            <div class="staff-card">
+                <img src="so2.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวภัทรียา ป่ากุญชร</div>
+                <div class="staff-position"> ผู้ช่วยศูนย์ฯ แม่ละอูน</div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง/ศูย์อพยพ </div>
+            </div>
+            <div class="staff-card">
+                <img src="lak.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวมนทกานติ์ ปิ่นญาติ </div>
+                <div class="staff-position"> ผู้ช่วยศูนย์ฯ แม่ละอูน</div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง/ศูย์อพยพ </div>
+            </div>
+             <div class="staff-card">
+                <img src="joi.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวรุ่งนภา สะทู</div>
+                <div class="staff-position"> ลูกจ้างยาเสพติดฯ</div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง/ศูย์อพยพ </div>
+            </div>
+            <div class="staff-card">
+                <img src="pairin.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name">นางสาวไพลิน สิงขรบรรจง </div>
+                <div class="staff-position"> ลูกจ้างศูนย์ฯ แม่ละอูน </div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง/ศูย์อพยพ </div>
+            </div>
+            <div class="staff-card">
+                <img src="kkk.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name"> นางสาวมณีรัตน์ อำไพกระสินธุ์</div>
+                <div class="staff-position"> ลูกจ้างศูนย์ฯ แม่ละอูน </div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง/ศูย์อพยพ </div>
+            </div>
+            <div class="staff-card">
+                <img src="noi.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name"> นางสาววรนิษฐา แก้วเรือน </div>
+                <div class="staff-position"> ลูกจ้างศูนย์ฯ แม่ละอูน </div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง/ศูย์อพยพ </div>
+            </div>
+            <div class="staff-card">
+                <img src="supi.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name"> นางสาวสุพิศ สุขสวัสดิ์ </div>
+                <div class="staff-position"> เจ้าหน้าที่บันทึกข้อมูลศูนย์ฯ </div>
+                  <div class="staff-position"> กลุ่มงานความมั่งคง/ศูย์อพยพ </div>
+            </div>
+            <div class="staff-card">
+                <img src="wut.jpg" alt="รูปเจ้าหน้าที่" class="staff-img">
+                <div class="staff-name"> นายณัฐวุฒิ ประยูรพนา </div>
+                <div class="staff-position"> ลูกจ้างศูนย์ฯ แม่ลามาหลวง </div>
+                  <div class="staff-position"> กลุ่มงานทะเบียนและบัตร </div>
+            </div>
+            </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

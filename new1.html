@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประกาศเปิดให้บริการช่วงสงกรานต์ - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --songkran-orange: #ff7e5f;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+
+        .top-bar { background-color: var(--primary-blue); color: var(--text-light); padding: 5px 20px; font-size: 14px; display: flex; justify-content: space-between; }
+        .header { background-color: #ffffff; padding: 20px 50px; display: flex; align-items: center; gap: 20px; }
+        .header img { width: 80px; }
+        .header-text h1 { font-size: 24px; color: var(--primary-blue); font-weight: 700; }
+
+        .navbar { background-color: var(--primary-blue); display: flex; justify-content: space-between; align-items: center; padding: 0 50px; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li a { display: block; color: var(--text-light); text-decoration: none; padding: 15px 20px; font-weight: 500; }
+
+        .page-header { background-color: #e9ecef; padding: 30px 50px; border-bottom: 3px solid var(--songkran-orange); }
+        .page-header h2 { color: var(--primary-blue); font-size: 28px; }
+
+        .content-container { padding: 40px 50px; max-width: 900px; margin: 30px auto; background-color: #ffffff; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; }
+
+        .news-title { color: #d9534f; font-size: 26px; font-weight: 700; margin-bottom: 15px; line-height: 1.4; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        
+        .status-badge { display: inline-block; background-color: #28a745; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 600; margin-bottom: 20px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+
+        .news-cover { width: 100%; height: auto; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ddd; }
+
+        .highlight-box { background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 25px; margin: 25px 0; border-radius: 4px; }
+        .highlight-box h4 { color: #856404; font-size: 20px; margin-bottom: 10px; }
+
+        .info-list { list-style: none; margin-bottom: 30px; }
+        .info-list li { margin-bottom: 12px; padding-left: 30px; position: relative; font-size: 17px; }
+        .info-list li i { position: absolute; left: 0; top: 5px; color: var(--primary-blue); }
+
+        .btn-back { display: inline-block; background-color: #e2e3e5; color: #383d41; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: 600; margin-top: 20px; }
+
+        .footer { background-color: #0d2650; color: var(--text-light); text-align: center; padding: 20px; font-size: 14px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <a href="admin_contact.html" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="#">บริการประชาชน</a></li>
+            <li><a href="#" class="active">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>ข่าวประชาสัมพันธ์</h2>
+    </div>
+
+    <div class="content-container">
+        <div class="status-badge"><i class="fas fa-check-circle"></i> เปิดให้บริการปกติ</div>
+        <h2 class="news-title">ที่ทำการปกครองอำเภอสบเมย เปิดให้บริการประชาชนในช่วงเทศกาลสงกรานต์ ประจำปี 2569</h2>
+        
+        <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
+            <i class="far fa-calendar-alt"></i> วันที่: [ใส่วันที่ประกาศตรงนี้] | <i class="fas fa-user"></i> โดย: นายพรศักดิ์ ไสวบุษบา
+        </p>
+
+        <img src="song.jpg" alt="ประกาศสงกรานต์" class="news-cover">
+
+        <div class="news-body">
+            <p style="text-indent: 2em; margin-bottom: 20px;">
+                เพื่อเป็นการอำนวยความสะดวกให้กับพี่น้องประชาชนที่เดินทางกลับภูมิลำเนาในช่วงเทศกาลสงกรานต์ และมีความประสงค์จะติดต่อราชการ งานทะเบียนและบัตรประจำตัวประชาชน อำเภอสบเมย ขอแจ้งกำหนดการเปิดให้บริการดังนี้:
+            </p>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-bullhorn"></i> แจ้งเปิดการให้บริการ</h4>
+                <p><strong>สำนักทะเบียนอำเภอสบเมย เปิดให้บริการประชาชน "ตามปกติ"</strong> ในช่วงวันหยุดเทศกาลสงกรานต์ ระหว่างวันที่ [ใส่ช่วงวันที่ เช่น 13 - 15 เมษายน 2569]</p>
+            </div>
+
+            <ul class="info-list">
+                <li><i class="fas fa-id-card"></i> <strong>งานบัตรประจำตัวประชาชน:</strong> บริการทำบัตรใหม่ กรณีบัตรหมดอายุ, สูญหาย หรือชำรุด</li>
+                <li><i class="fas fa-address-book"></i> <strong>งานทะเบียนราษฎร:</strong> บริการแจ้งเกิด, แจ้งตาย และการย้ายที่อยู่</li>
+                <li><i class="fas fa-clock"></i> <strong>เวลาให้บริการ:</strong> ตั้งแต่เวลา 08.30 น. - 16.30 น.</li>
+            </ul>
+
+            <p style="color: #d9534f; font-weight: 600; text-align: center;">
+                "บำบัดทุกข์ บำรุงสุข เพราะเราคือครอบครัวเดียวกัน"
+            </p>
+        </div>
+
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> กลับหน้าหลัก</a>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>

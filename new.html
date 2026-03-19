@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข่าวประชาสัมพันธ์ - โครงการอำเภอยิ้ม</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --primary-yellow: #f4c22b;
+            --bg-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 5px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header-text h1 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .header-text p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 30px 50px;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        .page-header h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* News Content */
+        .content-container {
+            padding: 40px 50px;
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        .news-title {
+            color: var(--primary-blue);
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .news-meta {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .news-meta i {
+            color: var(--primary-yellow);
+        }
+
+        /* News Cover Image */
+        .news-cover {
+            width: 100%;
+            height: 400px; /* ปรับความสูงของรูปข่าวหลัก */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            background-color: #f0f0f0;
+        }
+
+        .news-body {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .news-body p {
+            margin-bottom: 15px;
+            text-indent: 2em; /* ย่อหน้า */
+        }
+
+        /* Gallery in News */
+        .news-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .news-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-back {
+            display: inline-block;
+            background-color: #e2e3e5;
+            color: #383d41;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #d6d8db;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d2650;
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .news-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
+        <span>
+            <a href="admin_contact.html" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
+        </span>
+    </div>
+
+    <header class="header">
+        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
+        <div class="header-text">
+            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
+            <p>จังหวัดแม่ฮ่องสอน</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับหน่วยงาน</a></li>
+            <li><a href="#">บริการประชาชน</a></li>
+            <li><a href="#" class="active">ข่าวสารและประกาศ</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>ข่าวประชาสัมพันธ์</h2>
+        <div class="breadcrumb">
+            <a href="index.html">หน้าแรก</a> &gt; ข่าวสารและประกาศ &gt; โครงการอำเภอยิ้ม
+        </div>
+    </div>
+
+    <div class="content-container">
+        
+        <h2 class="news-title">ที่ว่าการอำเภอสบเมย จัดกิจกรรมโครงการ "ศูนย์ดำรงธรรมอำเภอ...ยิ้ม" (อำเภอเคลื่อนที่) ให้บริการประชาชนในพื้นที่ห่างไกล</h2>
+        
+        <div class="news-meta">
+            <span><i class="far fa-calendar-alt"></i> วันที่: [19 มีนาคาม 2569]</span>
+            <span><i class="fas fa-user"></i> โพสต์โดย: ผู้ดูแลระบบ (นายพรศักดิ์ ไสวบุษบา)</span>
+            <span><i class="fas fa-tag"></i> หมวดหมู่: กิจกรรมอำเภอ</span>
+        </div>
+
+        <img src="new1.jpg" alt="ภาพโครงการอำเภอยิ้ม" class="news-cover">
+
+        <div class="news-body">
+            <p>
+                อำเภอสบเมย นำโดยนายอำเภอสบเมย พร้อมด้วยหัวหน้าส่วนราชการระดับอำเภอ ปลัดอำเภอ เจ้าหน้าที่ปกครอง ผู้นำท้องที่ และหน่วยงานที่เกี่ยวข้อง ลงพื้นที่จัดกิจกรรมตามโครงการ "ศูนย์ดำรงธรรมอำเภอ...ยิ้ม" (อำเภอเคลื่อนที่) ประจำเดือน [ใส่เดือนตรงนี้] ณ [ใส่สถานที่จัดงานตรงนี้ เช่น ศาลาประชาคมหมู่บ้าน...] 
+            </p>
+            <p>
+                การจัดกิจกรรมในครั้งนี้ มีวัตถุประสงค์เพื่อนำงานบริการของรัฐออกไปให้บริการแก่ประชาชนในพื้นที่ห่างไกล เพื่อเป็นการลดภาระค่าใช้จ่ายในการเดินทางของประชาชนในการเข้ามาติดต่อราชการที่ตัวอำเภอ โดยมีการออกบูธให้บริการจากหลากหลายหน่วยงาน เช่น งานบริการทำบัตรประจำตัวประชาชนเคลื่อนที่ (Mobile Unit) การรับปรึกษาปัญหาข้อกฎหมาย การรับเรื่องราวร้องทุกข์ของศูนย์ดำรงธรรมอำเภอ การให้ความรู้ด้านการเกษตร สาธารณสุข และการมอบถุงยังชีพให้แก่ผู้ยากไร้และผู้สูงอายุในพื้นที่
+            </p>
+            <p>
+                ทั้งนี้ นายอำเภอสบเมย ได้พบปะพูดคุยเพื่อรับฟังปัญหาความเดือดร้อนและความต้องการของพี่น้องประชาชนในพื้นที่โดยตรง เพื่อนำไปบูรณาการแก้ไขปัญหาร่วมกับองค์กรปกครองส่วนท้องถิ่นและหน่วยงานที่เกี่ยวข้องต่อไป ซึ่งกิจกรรมดังกล่าวได้รับความสนใจและมีประชาชนมาร่วมรับบริการเป็นจำนวนมาก
+            </p>
+        </div>
+
+        <div class="news-gallery">
+            <img src="new2.jpg" alt="บรรยากาศงานอำเภอยิ้ม 1">
+            <img src="new3.jpg" alt="บรรยากาศงานอำเภอยิ้ม 2">
+        </div>
+
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> กลับหน้าหลัก</a>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>
