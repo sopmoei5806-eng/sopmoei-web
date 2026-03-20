@@ -10,377 +10,286 @@
     <style>
         :root {
             --primary-blue: #143b7a;
-            --primary-yellow: #f4c22b;
-            --bg-color: #f8f9fa;
-            --text-dark: #333333;
-            --text-light: #ffffff;
+            --secondary-blue: #0a214a;
+            --premium-yellow: #f4c22b;
+            --gold: #d4af37;
+            --bg-color: #f4f7fa;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Sarabun', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* Top Bar & Header */
-        .top-bar {
-            background-color: var(--primary-blue);
-            color: var(--text-light);
-            padding: 5px 20px;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .header {
-            background-color: #ffffff;
-            padding: 20px 50px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .header img {
-            width: 80px;
-            height: auto;
-        }
-        .header-text h1 {
-            font-size: 24px;
-            color: var(--primary-blue);
-            font-weight: 700;
-        }
-        .header-text p {
-            font-size: 16px;
-            color: #666;
-        }
-
-        /* Navigation Bar + Dropdown */
+        /* Navigation */
         .navbar {
             background-color: var(--primary-blue);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 0 50px;
-        }
-        .nav-links {
-            list-style: none;
             display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 1000;
         }
+        .nav-links { list-style: none; display: flex; }
         .nav-links li a {
-            display: block;
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 15px 20px;
-            font-weight: 500;
-            transition: 0.3s;
+            display: block; color: var(--white); text-decoration: none;
+            padding: 18px 25px; font-weight: 500; transition: var(--transition);
         }
-        .nav-links li a:hover, .nav-links li a.active {
-            background-color: var(--primary-yellow);
-            color: var(--primary-blue);
-        }
+        .nav-links li a:hover, .nav-links li a.active { background: var(--premium-yellow); color: var(--primary-blue); }
 
-        /* Dropdown CSS */
-        .dropdown { position: relative; }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 220px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-            z-index: 100;
-            border-top: 3px solid var(--primary-yellow);
-            border-radius: 0 0 6px 6px;
-            overflow: hidden;
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 70px 20px;
+            text-align: center;
+            color: var(--white);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            margin-bottom: 40px;
         }
-        .nav-links .dropdown-content a {
-            color: var(--text-dark);
-            padding: 12px 20px;
-            font-weight: 400;
-            border-bottom: 1px solid #f0f0f0;
-            background-color: #ffffff;
-        }
-        .nav-links .dropdown-content a:hover {
-            background-color: #f8f9fa;
-            color: var(--primary-blue);
-            padding-left: 25px;
-        }
-        .dropdown:hover .dropdown-content { display: block; }
+        .page-banner h2 { font-size: 36px; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
-        /* Page Header */
-        .page-header {
-            background-color: #e9ecef;
-            padding: 30px 50px;
-            border-bottom: 3px solid var(--primary-yellow);
-        }
-        .page-header h2 {
-            color: var(--primary-blue);
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        .breadcrumb {
-            font-size: 14px;
-            color: #666;
-        }
-        .breadcrumb a {
-            color: var(--primary-blue);
-            text-decoration: none;
-        }
-
-        /* Main Content */
-        .content-container {
-            padding: 40px 50px;
-            max-width: 1100px; 
-            margin: 30px auto;
-            background-color: #ffffff;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-            border-radius: 8px;
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
         }
 
         .content-title {
-            color: var(--primary-blue);
-            font-size: 24px;
-            margin-bottom: 40px;
             text-align: center;
-            position: relative;
+            color: var(--primary-blue);
+            font-size: 26px;
+            margin-bottom: 50px;
+            font-weight: 700;
         }
-        .content-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-yellow);
-            margin: 10px auto 0;
-            border-radius: 2px;
+        .content-title span {
+            border-bottom: 4px solid var(--gold);
+            padding-bottom: 10px;
         }
 
         /* Palad Grid Layout */
         .palad-grid {
             display: grid;
-            /* ปรับขนาดการ์ดให้ใหญ่กว่าเจ้าหน้าที่ทั่วไป (ประมาณ 3 คนต่อแถว) */
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
         }
 
         /* Palad Card Styling */
         .palad-card {
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
         }
 
         .palad-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
-            border-color: var(--primary-yellow);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
-        /* แถบสีด้านบนของการ์ดแต่ละใบ */
-        .card-top-bar {
-            height: 5px;
-            background-color: var(--primary-blue);
+        /* แถบสีด้านบนของการ์ด */
+        .card-accent {
+            height: 8px;
+            background: linear-gradient(to right, var(--primary-blue), var(--gold));
         }
 
         .card-body {
-            padding: 30px 20px 20px;
+            padding: 40px 20px;
             text-align: center;
-            flex-grow: 1;
+        }
+
+        .palad-img-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
         }
 
         .palad-img {
-            width: 140px;
-            height: 140px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid #fff;
-            box-shadow: 0 0 0 3px var(--primary-yellow);
-            background-color: #ddd;
+            border: 5px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            background-color: #eee;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* วงกลมซ้อนหลังรูป */
+        .palad-img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--premium-yellow));
+            z-index: 1;
         }
 
         .palad-name {
             color: var(--primary-blue);
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .palad-position {
-            color: #555;
-            font-size: 16px;
+            color: var(--gold);
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
         }
 
-        /* กลุ่มงาน/ฝ่ายที่รับผิดชอบ */
+        /* ส่วนงานที่รับผิดชอบ */
         .palad-group {
-            background-color: #f8f9fa;
+            background-color: #f8faff;
             color: var(--primary-blue);
-            padding: 10px;
-            border-radius: 6px;
+            padding: 12px 20px;
+            border-radius: 50px;
             font-size: 14px;
-            border: 1px dashed #ccc;
-            margin-top: auto; /* ดันไปอยู่ด้านล่างสุดของช่องเนื้อหาเสมอ */
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e1e8f0;
+            font-weight: 500;
         }
 
         .palad-group i {
-            color: var(--primary-yellow);
-            margin-right: 5px;
+            font-size: 16px;
         }
 
         /* Footer */
         .footer {
-            background-color: #0d2650;
-            color: var(--text-light);
+            background: #0a1931;
+            color: rgba(255,255,255,0.6);
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
             font-size: 14px;
-            margin-top: 40px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 10px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .content-container {
-                padding: 30px 20px;
-            }
+            .navbar { padding: 0 20px; }
+            .palad-grid { grid-template-columns: 1fr; }
+            .page-banner h2 { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <span>กรมการปกครอง กระทรวงมหาดไทย</span>
-        <span>
-            <a href="admin_contact.html" style="color: white; text-decoration: none;"><i class="fas fa-user-cog"></i> ติดต่อผู้ดูแลระบบ</a>
-        </span>
-    </div>
-
-    <header class="header">
-        <img src="dopa.png" alt="โลโก้กรมการปกครอง">
-        <div class="header-text">
-            <h1>ที่ทำการปกครองอำเภอสบเมย</h1>
-            <p>จังหวัดแม่ฮ่องสอน</p>
-        </div>
-    </header>
-
     <nav class="navbar">
         <ul class="nav-links">
-            <li><a href="index.html">หน้าแรก</a></li>
-            
-            <li class="dropdown">
-                <a href="#" class="active">เกี่ยวกับหน่วยงาน <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="peper.html"><i class="fas fa-users"></i> 1. เจ้าหน้าที่</a>
-                    <a href="comphun.html"><i class="fas fa-user-tie"></i> 2. ผู้บริหาร</a>
-                    <a href="palad.html"><i class="fas fa-user-shield"></i> 3. ปลัดอำเภอ</a>
-                </div>
-            </li>
-
-            <li><a href="#">บริการประชาชน</a></li>
-            <li><a href="#">ข่าวสารและประกาศ</a></li>
-            <li><a href="#">ติดต่อเรา</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> หน้าแรก</a></li>
+            <li><a href="comphun.html"><i class="fas fa-user-tie"></i> ผู้บริหาร</a></li>
+            <li><a href="peper.html"><i class="fas fa-users"></i> เจ้าหน้าที่</a></li>
+            <li><a href="call.html"><i class="fas fa-envelope"></i> ติดต่อเรา</a></li>
         </ul>
     </nav>
 
-    <div class="page-header">
-        <h2>ทำเนียบปลัดอำเภอ/ข้าราชการ</h2>
-        <div class="breadcrumb">
-            <a href="index.html">หน้าแรก</a> &gt; เกี่ยวกับหน่วยงาน &gt; ปลัดอำเภอ
+    <header class="page-banner">
+        <h2>ทำเนียบปลัดอำเภอและข้าราชการ</h2>
+        <div class="breadcrumb" style="font-size: 14px; opacity: 0.8; margin-top: 10px;">
+            <a href="index.html" style="color: var(--premium-yellow); text-decoration: none;">หน้าแรก</a> / เกี่ยวกับหน่วยงาน / ปลัดอำเภอ
         </div>
-    </div>
+    </header>
 
-    <div class="content-container">
+    <div class="container">
         
-        <h3 class="content-title">ปลัดอำเภอสบเมย</h3>
+        <h3 class="content-title"><span>ฝ่ายบริหารงานปกครอง</span></h3>
 
         <div class="palad-grid">
-             <div class="palad-card">
-                <div class="card-top-bar"></div>
+            
+            <div class="palad-card">
+                <div class="card-accent"></div>
                 <div class="card-body">
-                    <img src="ptour.jpg" alt="รูปปลัดอำเภอ" class="palad-img">
+                    <div class="palad-img-wrapper">
+                        <img src="ptour.jpg" alt="นายตวงสิทธิ์ ประทินสุขอำไพ" class="palad-img">
+                    </div>
                     <div class="palad-name">นายตวงสิทธิ์ ประทินสุขอำไพ</div>
                     <div class="palad-position">ปลัดอำเภอ (จพง.ปค.ชก.)</div>
                     <div class="palad-group">
-                        <i class="fas fa-shield-alt"></i> ปลัดงานทะเบียนและบัตร
-                    </div>
-                </div>
-            </div>
-            <div class="palad-card">
-                <div class="card-top-bar"></div>
-                <div class="card-body">
-                    <img src="pdon.jpg" alt="รูปปลัดอำเภอ" class="palad-img">
-                    <div class="palad-name">นายธนวัฒน์ คงศิริ </div>
-                    <div class="palad-position">ปลัดอำเภอ (จพง.ปค.ชก.)</div>
-                    <div class="palad-group">
-                        <i class="fas fa-shield-alt"></i> ปลัดงานความมั่งคง
-                    </div>
-                </div>
-            </div>
-            <div class="palad-card">
-                <div class="card-top-bar"></div>
-                <div class="card-body">
-                    <img src="newwit.jpg" alt="รูปปลัดอำเภอ" class="palad-img">
-                    <div class="palad-name">นายประวิทย์ สุสกุลโชคดี </div>
-                    <div class="palad-position">ปลัดอำเภอ (จพง.ปค.ปก.)</div>
-                    <div class="palad-group">
-                        <i class="fas fa-shield-alt"></i> ปลัดสำนักงานอำเภอ
+                        <i class="fas fa-id-card"></i> งานทะเบียนและบัตร
                     </div>
                 </div>
             </div>
 
             <div class="palad-card">
-                <div class="card-top-bar"></div>
+                <div class="card-accent"></div>
                 <div class="card-body">
-                    <img src="pboll.jpg" alt="รูปปลัดอำเภอ" class="palad-img">
+                    <div class="palad-img-wrapper">
+                        <img src="pdon.jpg" alt="นายธนวัฒน์ คงศิริ" class="palad-img">
+                    </div>
+                    <div class="palad-name">นายธนวัฒน์ คงศิริ</div>
+                    <div class="palad-position">ปลัดอำเภอ (จพง.ปค.ชก.)</div>
+                    <div class="palad-group">
+                        <i class="fas fa-shield-alt"></i> งานความมั่นคง
+                    </div>
+                </div>
+            </div>
+
+            <div class="palad-card">
+                <div class="card-accent"></div>
+                <div class="card-body">
+                    <div class="palad-img-wrapper">
+                        <img src="newwit.jpg" alt="นายประวิทย์ สุสกุลโชคดี" class="palad-img">
+                    </div>
+                    <div class="palad-name">นายประวิทย์ สุสกุลโชคดี</div>
+                    <div class="palad-position">ปลัดอำเภอ (จพง.ปค.ปก.)</div>
+                    <div class="palad-group">
+                        <i class="fas fa-building"></i> สำนักงานอำเภอ
+                    </div>
+                </div>
+            </div>
+
+            <div class="palad-card">
+                <div class="card-accent"></div>
+                <div class="card-body">
+                    <div class="palad-img-wrapper">
+                        <img src="pboll.jpg" alt="ส.ต.อ.ศุภชัย จันสุวรรณ์" class="palad-img">
+                    </div>
                     <div class="palad-name">ส.ต.อ.ศุภชัย จันสุวรรณ์</div>
                     <div class="palad-position">ปลัดอำเภอ (จพง.ปค.ปก.)</div>
                     <div class="palad-group">
-                        <i class="fas fa-balance-scale"></i> ปลัดกลุ่มงานปกครองและประจำศูนย์ดำรงธรรมอำเภอ 
+                        <i class="fas fa-balance-scale"></i> งานปกครอง/ศูนย์ดำรงธรรม
                     </div>
                 </div>
             </div>
 
             <div class="palad-card">
-                <div class="card-top-bar"></div>
+                <div class="card-accent"></div>
                 <div class="card-body">
-                    <img src="noo.jpg" alt="รูปปลัดอำเภอ" class="palad-img">
+                    <div class="palad-img-wrapper">
+                        <img src="noo.jpg" alt="นางสาวกชพร เชียงคำ" class="palad-img">
+                    </div>
                     <div class="palad-name">นางสาวกชพร เชียงคำ</div>
                     <div class="palad-position">เสมียนตราอำเภอ (จพง.กง.บช.(ช.))</div>
                     <div class="palad-group">
-                        <i class="fas fa-folder-open"></i>  (เสมียนตรา)
-                    </div>
-                </div>
-            </div>
-              <div class="palad-card">
-                <div class="card-top-bar"></div>
-                <div class="card-body">
-                    <img src="jpk.jpg" alt="รูปปลัดอำเภอ" class="palad-img">
-                    <div class="palad-name">นางสาวอาทิตยา บุญดี </div>
-                    <div class="palad-position">เจ้าหน้าที่ปกครอง</div>
-                    <div class="palad-group">
-                        <i class="fas fa-shield-alt"></i> เจ้าหน้าที่ปกครอง
+                        <i class="fas fa-folder-open"></i> กลุ่มงานเสมียนตรา
                     </div>
                 </div>
             </div>
 
+            <div class="palad-card">
+                <div class="card-accent"></div>
+                <div class="card-body">
+                    <div class="palad-img-wrapper">
+                        <img src="jpk.jpg" alt="นางสาวอาทิตยา บุญดี" class="palad-img">
+                    </div>
+                    <div class="palad-name">นางสาวอาทิตยา บุญดี</div>
+                    <div class="palad-position">เจ้าหน้าที่ปกครอง</div>
+                    <div class="palad-group">
+                        <i class="fas fa-user-check"></i> กลุ่มงานบริหารงานปกครอง
+                    </div>
+                </div>
             </div>
+
+        </div>
 
     </div>
 
