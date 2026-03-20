@@ -207,6 +207,13 @@
             margin-bottom: 15px;
             transition: var(--transition);
         }
+        .services-grid {
+    display: grid;
+    /* ปรับให้รองรับ 4 คอลัมน์ในจอคอม และ 2 คอลัมน์ในแท็บเล็ต */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+    margin-bottom: 40px;
+}
         .service-card:hover .service-icon { color: var(--primary-yellow); transform: scale(1.1); }
         .service-card p { font-weight: 600; font-size: 15px; }
 
@@ -326,6 +333,7 @@
                     <a href="card.html"><i class="fas fa-id-card"></i> 2. บัตรประจำตัวประชาชน</a>
                     <a href="kho.html"><i class="fas fa-file-contract"></i> 3. งานทะเบียนทั่วไป</a>
                     <a href="seero.html"><i class="fas fa-balance-scale"></i> 4. ศูนย์ดำรงธรรม</a>
+                    <a href="nationality.html"><i class="fas fa-balance-scale"></i> 5. สัญชาติ</a>
                 </div>
             </li>
            <li class="dropdown">
@@ -377,15 +385,19 @@
                     <i class="fas fa-shield-cat service-icon"></i>
                     <p>ศูนย์ดำรงธรรม</p>
                 </a>
+                <a href="nationality.html" class="service-card">
+    <i class="fas fa-passport service-icon"></i>
+    <p>สัญชาติและสถานะบุคคล</p>
+</a>
             </div>
 
             <h3 class="section-title">ข่าวประชาสัมพันธ์ล่าสุด</h3>
             <div class="news-list">
                 <div class="news-item">
-                    <img src="images/tee.jpg" class="news-img" alt="ข่าวอำเภอยิ้ม">
+                    <img src="p2p.jpg" class="news-img" alt="peper to peper">
                     <div class="news-content">
                         <a href="new.html" style="text-decoration: none;">
-                            <h4>โครงการอำเภอยิ้ม (อำเภอเคลื่อนที่) ออกให้บริการเชิงรุกสู่พี่น้องประชาชน</h4>
+                            <h4>peper to peper ณ.บ้านสบเมย ตำบลแม่สามแลบ อำเภอสบเมย จังหวัดแม่ฮ่องสอน </h4>
                         </a>
                         <span class="news-date"><i class="far fa-calendar-alt"></i> 19 มีนาคม 2569</span>
                     </div>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สัญชาติและสถานะบุคคล - ที่ทำการปกครองอำเภอสบเมย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #143b7a;
+            --secondary-blue: #0a214a;
+            --premium-yellow: #f4c22b;
+            --gold: #d4af37;
+            --bg-color: #f4f7fa;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background-color: var(--bg-color); color: #333; line-height: 1.6; }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 0 50px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li a {
+            display: block; color: var(--white); text-decoration: none;
+            padding: 18px 25px; font-weight: 500; transition: var(--transition);
+        }
+        .nav-links li a:hover { background: var(--premium-yellow); color: var(--primary-blue); }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 70px 20px;
+            text-align: center;
+            color: var(--white);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            margin-bottom: 40px;
+        }
+        .page-banner h2 { font-size: 32px; font-weight: 700; }
+
+        .container { max-width: 1200px; margin: 0 auto 80px; padding: 0 20px; }
+
+        /* Nationality Section Layout */
+        .nationality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--gold);
+            transition: var(--transition);
+        }
+        .service-box:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        .service-box h3 {
+            color: var(--primary-blue);
+            font-size: 22px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .service-box h3 i { color: var(--gold); font-size: 28px; }
+
+        /* Detail Styling */
+        .info-list { list-style: none; }
+        .info-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #555;
+        }
+        .info-list li::before {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute; left: 0;
+            color: var(--premium-yellow);
+        }
+
+        .alert-info {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            border: 1px solid #d0e3ff;
+        }
+        .alert-info strong { color: var(--primary-blue); display: block; margin-bottom: 5px; }
+        .alert-info p { font-size: 14px; color: #5a6a85; }
+
+        /* Steps Section */
+        .process-title {
+            text-align: center;
+            color: var(--primary-blue);
+            margin: 60px 0 30px;
+            font-size: 26px;
+        }
+
+        .flow-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .flow-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-bottom: 4px solid var(--premium-yellow);
+        }
+        .flow-icon {
+            font-size: 30px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .footer { background: #0a1931; color: rgba(255,255,255,0.6); text-align: center; padding: 40px; margin-top: 60px; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            .nationality-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="card.html">งานทะเบียนและบัตร</a></li>
+            <li><a href="call.html">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-banner">
+        <h2>งานสัญชาติและสถานะบุคคล</h2>
+        <p style="opacity: 0.8; margin-top: 5px;">แก้ไขปัญหาสถานะบุคคล คุ้มครองสิทธิ และการได้มาซึ่งสัญชาติไทย</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="nationality-grid">
+            
+            <div class="service-box">
+                <h3><i class="fas fa-file-certificate"></i> การได้มาซึ่งสัญชาติไทย</h3>
+                <ul class="info-list">
+                    <li>การขอสัญชาติไทยตามมาตรา 7 (เกิดในไทย/บุพการีมีสัญชาติ)</li>
+                    <li>การขอลงรายการสัญชาติไทยตามมาตรา 23</li>
+                    <li>การขอถือสัญชาติตามคู่สมรส</li>
+                    <li>การแปลงสัญชาติเป็นไทยสำหรับคนต่างด้าว</li>
+                </ul>
+                <div class="alert-info">
+                    <strong><i class="fas fa-user-check"></i> กลุ่มเป้าหมาย:</strong>
+                    <p>บุคคลที่ตกหล่นทางทะเบียน, บุตรของคนต่างด้าวที่เกิดในไทย และผู้ขอแปลงสัญชาติ</p>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <h3><i class="fas fa-id-card-alt"></i> บุคคลที่ไม่มีสถานะทางทะเบียน</h3>
+                <ul class="info-list">
+                    <li>การทำบัตรประจำตัวบุคคลที่ไม่มีสถานะทางทะเบียน (บัตรขาวขอบชมพู)</li>
+                    <li>การขอเพิ่มชื่อเข้าในทะเบียนบ้าน (ทร.13 หรือ ทร.14)</li>
+                    <li>การปรับปรุงฐานข้อมูลประวัติรายบุคคล</li>
+                    <li>การแจ้งเกิดย้อนหลังสำหรับผู้ไม่มีสถานะ</li>
+                </ul>
+                <div class="alert-info">
+                    <strong><i class="fas fa-exclamation-triangle"></i> ข้อควรระวัง:</strong>
+                    <p>ต้องผ่านการพิสูจน์ตัวบุคคลและตรวจสอบพยานหลักฐานจากผู้นำชุมชนอย่างเคร่งครัด</p>
+                </div>
+            </div>
+
+        </div>
+
+        <h3 class="process-title">ขั้นตอนการยื่นคำร้องด้านสัญชาติ</h3>
+        
+        <div class="flow-container">
+            <div class="flow-item">
+                <i class="fas fa-search flow-icon"></i>
+                <p><strong>1. ตรวจสอบสิทธิ์</strong><br><small>ปรึกษาเจ้าหน้าที่เพื่อจำแนกกลุ่มมาตรา</small></p>
+            </div>
+            <div class="flow-item">
+                <i class="fas fa-file-upload flow-icon"></i>
+                <p><strong>2. ยื่นคำร้อง</strong><br><small>พร้อมเอกสารหลักฐาน และพยานบุคคล</small></p>
+            </div>
+            <div class="flow-item">
+                <i class="fas fa-fingerprint flow-icon"></i>
+                <p><strong>3. สอบสวน/ตรวจ DNA</strong><br><small>กรณีต้องพิสูจน์ความสัมพันธ์ทางสายเลือด</small></p>
+            </div>
+            <div class="flow-item">
+                <i class="fas fa-award flow-icon"></i>
+                <p><strong>4. พิจารณาอนุมัติ</strong><br><small>และดำเนินการเพิ่มชื่อ/ทำบัตร</small></p>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; background: white; padding: 30px; border-radius: 20px; border: 1px solid #eee;">
+            <h4 style="color: var(--primary-blue); margin-bottom: 15px;"><i class="fas fa-info-circle"></i> ข้อมูลเพิ่มเติม</h4>
+            <p style="font-size: 15px; color: #666;">สำหรับงานด้านสัญชาติในพื้นที่อำเภอสบเมย ประชาชนสามารถเข้ามาขอรับคำปรึกษาได้ที่ <strong>ฝ่ายทะเบียนและบัตร (งานสัญชาติ)</strong> ในวันและเวลาราชการ กรุณาเตรียมเอกสารพื้นฐาน เช่น แผ่นประวัติบุคคล, สูติบัตร (ถ้ามี), และพยานบุคคลที่เป็นผู้นำท้องที่มาด้วยทุกครั้ง</p>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 ที่ทำการปกครองอำเภอสบเมย จังหวัดแม่ฮ่องสอน สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>
